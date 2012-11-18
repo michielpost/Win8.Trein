@@ -1,0 +1,48 @@
+Opmerkingen:
+Zoomen op main screen was niet reproduceerbaar in emulator. Properties gezet om dit uit te zetten maar niet kunnen testen.
+
+Fixed:
+Zoom uitzetten
+Description in app manifest aanpassen
+App bar knoppen naar links verplaatst
+Je hoeft niet over te stappen. Je hebt 1 overstap etc.
+Ondersteuning voor NL en Engels op de juiste manier
+Datum/tijd label gemaakt en : weggehaald tussen de uren/minuten
+Datum tijd plannen blijft nu goed werken. Tijd wordt gerest naar NU als je terug gaat naar het main screen
+Back button verwijderd uit flyout bij storingen en werkzaamheden
+Aankomt/Vertrek tekst bij planner tekst groter gemaakt (zelfde als de rest)
+Back button op goede hoogte gezet
+Stations na typen rechts tonen en laatste stations vervangen
+Zelf toegevoegde stations op volgorde van toevoeging tonen (main screen, niet meer alfabetisch)
+Actuele vertrektijden in geheel klikbaar maken
+Email links klikbaar gemaakt
+Logo's gecentreerd
+---
+
+
+
+
+Nog eens naar kijken misschien:
+Main screen sneller laden bij back
+
+
+--------------
+
+Versie 2:
+Tonen dat er geen internet connectie is
+
+Links in de app bar:
+Toggle button om storingen wel of niet te tonen op main screen
+Toggle om dichtsbijzijnde stations wel of niet te tonen
+
+Hoge resolutie, reizen onder elkaar tonen
+Bij minder dan 5 zoekresultaten, meteen al vertrektijden tonen van stations zoals op main screen
+Trajecten kunnen aangeven en tonen op main screen?
+
+Checkbox voor via laten staan en kunnen aan/uit vinken
+
+Uitzetten rechtermuisknop op reisadvies item dan beweegt het
+
+
+
+

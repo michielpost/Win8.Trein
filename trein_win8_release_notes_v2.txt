@@ -1,0 +1,33 @@
+FINISHED Must fix:
+Planner:
+- Verbeterde autocomplete
+- Geen autocomplete keuze meer aan de rechterkant, altijd onder de textbox
+- Enter selecteert de bovenste suggestie
+
+
+FINISHED Should fix:
+- Snap view to full screen bij trip overview page toont volledige titel 
+
+
+-------------------------------------------------------------------
+TODO
+
+
+
+Should fix:
+
+- Geplande reis scrollen naar "eerder" is geen indicatie voor
+
+- Rechtermuisknop moet tilt animatie niet triggeren
+
+
+
+
+
+Nice to have:
+
+- Togglebutton voor storingen/dichtsbijzijnde stations weergeven in hoofdscherm
+
+- Icoon toevoegen bij internet connectivity unavailable
+
+- Semantic zoom bij geplande reis adviezen (tijden laten zien)

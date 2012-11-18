@@ -1,0 +1,26 @@
+Trein
+
+Trein kan de actuele vertrektijden tonen van Nederlandse stations en maakt het mogelijk een treinreis te plannen.
+
+Stations in de buurt worden automatisch getoond, daarnaast kunnen er eigen favoriete stations worden toegevoegd.
+
+Features:
+Toont automatisch stations in de buurt
+Plan een treinreis
+Bekijk actuele vertrektijden
+Gebruik de search charm om snel een station te selecteren en de actuele vertrektijden te bekijken
+Pin favoriete stations vast aan je startscherm
+Deel een geplande reis
+
+
+--
+
+Trein is an application for the Dutch railsways. It allows you to see the current departure times and you can plan a trip.
+
+Stations nearby are shown automatically and you can add favorite stations.
+
+Features:
+Automatically shows stations nearby
+Use the search charm to quickly access the departure times of a station
+Pin your favorite stations for quick access
+Share a planned trip

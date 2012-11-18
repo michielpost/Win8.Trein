@@ -1,0 +1,80 @@
+Opmerkingen:
+Zoomen op main screen was niet reproduceerbaar in emulator. Properties gezet om dit uit te zetten maar niet kunnen testen.
+
+FINISHED must fix:
+- Tijd van geplande reis wordt niet altijd goed meegenomen
+
+- Station toevoegen knop naar links in app bar
+
+- Back button verwijderen uit storingen/werkzaamheden flyout
+
+- Language preference van gebruiker juist implementeren
+- Indien geen reizen beschikbaar, geen leeg scherm tonen
+
+- Van/naar zelfde station, via ander station geeft geen resultaat
+
+- Station selectie bij invoeren reis werkt niet altijd
+
+- Scrollen op vertrektijden pagina van station werkt niet met touch op tablet
+
+- Opgeslagen info wordt niet goed geladen als app wordt opgestart
+
+- Meldingen bij foutieve/onvolledige invoer
+ / Van/naar zelfde station
+
+- Support portrait mode
+
+
+
+FINISHED should fix:
+- Back button onderkant uitlijnen met header
+
+- Vertrek/aankomst radio button kleur/grootte aanpassen
+
+- Afgekapte items verwijderen uit lijst met vertrektijden (hoofdpagina)
+
+- Tap op een item in de stationslijst gaat naar overzichtpagina voor station, hele groep zou moeten tilten, ipv alleen item
+
+- Margin tussen back button en header in snap view verkleinen
+- App bar knop moet background naar wit bij pressed state
+
+- Back button background naar wit bij pressed state
+
+
+
+FINISHED nice to have:
+- Tone of voice aanpassen naar "je/jij" (bij aantal overstappen)
+
+FINISHED overig:
+- Zoom uitzetten
+- Description in app manifest aangepast
+- Datum/tijd label gemaakt en : weggehaald tussen de uren/minuten
+- Aankomt/Vertrek tekst bij planner tekst groter gemaakt (zelfde als de rest)
+- Stations na typen rechts tonen
+- Zelf toegevoegde stations op volgorde van toevoeging tonen (main screen, niet meer alfabetisch)
+- Email links klikbaar gemaakt
+- Logo's gecentreerd en dropshadow weggehaald
+
+
+-------------------------------------------------------------------
+TODO
+
+
+
+Should fix:
+
+- Geplande reis scrollen naar "eerder" is geen indicatie voor
+
+- Rechtermuisknop moet tilt animatie niet triggeren
+
+
+
+
+
+Nice to have:
+
+- Togglebutton voor storingen/dichtsbijzijnde stations weergeven in hoofdscherm
+
+- Icoon toevoegen bij internet connectivity unavailable
+
+- Semantic zoom bij geplande reis adviezen (tijden laten zien)

@@ -1,0 +1,67 @@
+﻿<UserControl
+    x:Class="ActueelNS.UserControls.ReisdeelSmallControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ActueelNS.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mocks="using:ActueelNS.Services.Mocks.Single"
+    mc:Ignorable="d"
+    d:DesignHeight="200"
+    d:DesignWidth="420">
+
+    <d:DesignPropertoes.DataContext>
+        <mocks:ReisDeelMock></mocks:ReisDeelMock>
+    </d:DesignPropertoes.DataContext>
+
+    <Grid Margin="0,0,0,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <TextBlock Grid.Column="0" Grid.Row="0" 
+                   Margin="0,0,10,0" Style="{StaticResource BasicTextStyle}" FontWeight="Bold" Text="{Binding FirstStop.DisplayTijd}" />
+
+        <StackPanel Grid.Column="1" Grid.Row="0">
+            
+                <TextBlock Style="{StaticResource BasicTextStyle}" FontWeight="Bold" Text="{Binding RegelEen}" />
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock   Style="{StaticResource BasicTextStyle}" 
+                                           Text="{Binding RegelTwee}" />
+                <TextBlock   Style="{StaticResource BasicTextStyle}"  Text="&#160;"></TextBlock>
+                <TextBlock   Style="{StaticResource BoldBasicTextStyle}"
+                                           Text="{Binding Richting}" />
+            </StackPanel>
+
+           
+        </StackPanel>
+
+
+
+
+
+
+      
+
+        <!--RIJ 2-->
+        <TextBlock Grid.Column="0" Grid.Row="1" 
+                                           Style="{StaticResource Text9Style}"
+                                           Text="{Binding LastStop.DisplayTijd}" />
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBlock Style="{StaticResource Text9Style}"
+                                           Text="{Binding RegelAankomst}" />
+        </StackPanel>
+
+    </Grid>
+
+
+
+</UserControl>

@@ -1,0 +1,497 @@
+﻿<common:LayoutAwarePage
+    x:Name="pageRoot"
+    x:Class="ActueelNS.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ActueelNS.Views"
+    xmlns:userControls="using:ActueelNS.UserControls"
+    xmlns:common="using:ActueelNS.Common"
+    xmlns:bm="using:Bing.Maps"
+    xmlns:helpers="using:ActueelNS.Helpers"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncfusion="using:Syncfusion.UI.Xaml.Controls.Input"
+    mc:Ignorable="d"
+    DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <common:LayoutAwarePage.Resources>
+   
+    </common:LayoutAwarePage.Resources>
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>-->
+
+
+        <!-- Back button and page title -->
+        <Grid Background="{StaticResource SideBarBackgroundColor}" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>                
+            </Grid.ColumnDefinitions>
+            
+         
+            <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" VerticalAlignment="Top"  Style="{StaticResource AppTitleTextStyle}"/>
+
+            <Grid x:Name="grid1" Grid.Row="1" Grid.ColumnSpan="2" Margin="60,0,0,0" HorizontalAlignment="Left">
+                    <userControls:PlannerControl DataContext="{Binding Planner}" d:IsHidden="True"></userControls:PlannerControl>
+            </Grid>
+        </Grid>
+
+        
+
+        <Grid x:Name="MainGrid" Grid.Row="0" Grid.Column="2" Margin="0,70,0,0">
+          
+
+                <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left"
+                              ZoomMode="Disabled" IsZoomInertiaEnabled="False"
+                              ScrollViewer.VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled"
+                               x:Name="grid" Grid.Column="1" Margin="0,0,0,0"
+                             >
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Width="80"></StackPanel>
+                    
+                        <!--STORINGEN-->
+
+                    <ListView x:Name="DisruptionList" IsTabStop="False"  Tapped="StoringenBorder_Tapped_1" VerticalAlignment="Stretch" VerticalContentAlignment="Top"
+                              SelectionMode="None"
+                              ScrollViewer.HorizontalScrollMode="Disabled" ScrollViewer.VerticalScrollMode="Disabled"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled"  
+                              ItemContainerStyle="{StaticResource NoHoverListViewItemStyle}">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.Items>
+                            <ListViewItem>
+                                <Grid Margin="0,0,0,0">
+
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+
+
+                                    <StackPanel>
+                                        <TextBlock Style="{StaticResource SubheaderTextStyle}" Margin="0,0,80,0" Tapped="StoringenBorder_Tapped_1" Text="{Binding Storingen.Title}"></TextBlock>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="1" Visibility="{Binding Storingen.IsBusy, Converter={StaticResource Vis}}">
+                                        <TextBlock Style="{StaticResource BasicTextStyle}" Margin="0,40,80,5" x:Uid="StoringenLadenTextBlock"  Text="Storingen laden..."></TextBlock>
+
+                                        <ProgressBar HorizontalAlignment="Stretch" IsIndeterminate="{Binding Storingen.IsBusy}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="1" Visibility="{Binding Storingen.ShowError, Converter={StaticResource Vis}}" Margin="0,0,0,0">
+                                        <TextBlock Style="{StaticResource BasicTextStyle}" Margin="0,40,80,0" x:Uid="StoringenErrorTextBlock"  Text="Fout tijdens het laden"></TextBlock>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="1" Visibility="{Binding Storingen.IsFinished, Converter={StaticResource Vis}}" >
+                                        <StackPanel x:Name="GeenStoringenPanel"  Visibility="{Binding Storingen.CurrentStoringen.Count, Converter={StaticResource InverseVis}}">
+                                            <TextBlock Style="{StaticResource BasicTextStyle}" Margin="0,43,80,0"  TextWrapping="Wrap" x:Uid="MainPageGeenStoringen">Geen storingen.</TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+
+
+                                    <!--<ItemsControl Grid.Row="2"  ItemsSource="{Binding Storingen.CurrentStoringen}" >
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <userControls:StoringenSmallControl Margin="0,0,0,20" />
+                                        </DataTemplate>
+
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>-->
+
+                                    <GridView IsHitTestVisible="False"  Grid.Row="2" Margin="0,40,0,0"  ItemsSource="{Binding Storingen.CurrentStoringen}" SelectionMode="None" HorizontalAlignment="Left" 
+                              ItemContainerStyle="{StaticResource StoringenGridViewStyle}"
+                              ScrollViewer.HorizontalScrollMode="Disabled" ScrollViewer.VerticalScrollMode="Disabled"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                        <GridView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <VariableSizedWrapGrid Orientation="Vertical" HorizontalChildrenAlignment="Left" HorizontalAlignment="Left"  Margin="0,0,80,0"/>
+                                            </ItemsPanelTemplate>
+                                        </GridView.ItemsPanel>
+                                        <GridView.ItemTemplate>
+                                            <DataTemplate>
+                                                <userControls:StoringenSmallControl Margin="0,0,0,0" HorizontalAlignment="Left" />
+                                            </DataTemplate>
+                                        </GridView.ItemTemplate>
+                                    </GridView>
+
+
+                                </Grid>
+                            </ListViewItem>
+
+                        </ListView.Items>
+                    </ListView>
+
+                    <!--MIJN STATIONS-->
+                    <Grid Margin="0,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock  Grid.Row="0" Style="{StaticResource SubheaderTextStyle}" Margin="0,5,80,0" Padding="0,0,0,40" x:Uid="MijnStationsHeader">Mijn Stations</TextBlock>
+
+                        <TextBlock Grid.Row="1" Margin="0,0,80,0" Text="Voeg een station toe via de AppBar." x:Uid="MyStationsEmpy" Visibility="{Binding FavStations.Count, Converter={StaticResource InverseVis}}" MaxWidth="250" Style="{StaticResource BasicTextStyle}"/>
+
+                        <GridView x:Name="FavStationsList" Grid.Row="2" Margin="0,-10,0,0" IsTabStop="False" ItemsSource="{Binding FavStations}" VerticalAlignment="Stretch" VerticalContentAlignment="Top"
+                              SelectionMode="Multiple"
+                                                  SelectionChanged="FavStationsList_SelectionChanged_1"
+                                   IsItemClickEnabled="True"
+                                  ItemClick="ListView_ItemClick_1"
+                              ScrollViewer.HorizontalScrollMode="Disabled" ScrollViewer.VerticalScrollMode="Disabled"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource StationGridViewStyle}"
+                              >
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VariableSizedWrapGrid Orientation="Vertical" HorizontalChildrenAlignment="Left" HorizontalAlignment="Left"  Margin="0,0,80,0"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+
+                            <GridView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="White"  MinHeight="40" Width="220"  HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Assets/station.png" Margin="0,0,10,0" Stretch="None" VerticalAlignment="Center" />
+                                                            <TextBlock  Style="{StaticResource BasicTextStyle}" FontSize="16" TextWrapping="NoWrap" TextTrimming="WordEllipsis" Width="190" Margin="0,0"  VerticalAlignment="Center"
+                                            Text="{Binding Name}"></TextBlock>
+                                                        </StackPanel>
+                                                     
+                                                    </Border>
+                                                </DataTemplate>
+
+                                </GridView.ItemTemplate>
+                        </GridView>
+
+                    </Grid>
+
+                    <!--IN DE BUURT-->
+                    <Grid Margin="0,0,0,0" Visibility="{Binding Gps.CurrentLocation, Converter={StaticResource Vis}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Style="{StaticResource SubheaderTextStyle}"  x:Uid="NearbyHeader"  Margin="0,5,80,0" Padding="0,0,0,40">In de buurt</TextBlock>
+
+                        <Grid Grid.Row="1" Tapped="Map_Tapped" Background="Transparent"  >
+                            <bm:Map Margin="0,0,80,0"  Width="300" Height="200"
+                                Credentials="At2kIoxcaekWGhzcM_VLct_V7L6IdxNQrRLfdweDVtHnqIDezrd2rITcAOxfFPJ4"
+                                ShowNavigationBar="False"
+                                ShowScaleBar="False"
+                                IsHitTestVisible="False"
+                                helpers:MapBindings.MapCenter="{Binding Gps.CenterLocation}"
+                                ZoomLevel="12">
+                                <!--<bm:Map.Center>
+                                <bm:Location  Latitude="{Binding Gps.FirstS.Lat}" Longitude="{Binding Gps.FirstS.Long}" />
+                            </bm:Map.Center>-->
+                                <bm:MapItemsControl ItemsSource="{Binding Gps.Stations}">
+                                    <bm:MapItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <!--<bm:Pushpin Text="{Binding Name}">
+                                                <bm:MapLayer.Position>
+                                                    <bm:Location Latitude="{Binding Lat}" Longitude="{Binding Long}" />
+                                                </bm:MapLayer.Position>
+                                            </bm:Pushpin>-->
+                                            <Image Source="/Assets/station_t.png" Stretch="None">
+                                                <bm:MapLayer.Position>
+                                                    <bm:Location Latitude="{Binding Lat}" Longitude="{Binding Long}" />
+                                                </bm:MapLayer.Position>
+                                            </Image>
+                                        </DataTemplate>
+                                    </bm:MapItemsControl.ItemTemplate>
+                                </bm:MapItemsControl>
+
+                            </bm:Map>
+
+                        </Grid>
+                        
+                        <GridView Grid.Row="2" IsTabStop="False" Margin="0,20,0,0" ItemsSource="{Binding Gps.Stations}" VerticalAlignment="Stretch" VerticalContentAlignment="Top"
+                              SelectionMode="None"
+                                  IsItemClickEnabled="True"
+                                  ItemClick="ListView_ItemClick_1"
+                              ScrollViewer.HorizontalScrollMode="Disabled" ScrollViewer.VerticalScrollMode="Disabled"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                              ItemContainerStyle="{StaticResource StationGridViewStyle}">
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VariableSizedWrapGrid Orientation="Vertical" HorizontalChildrenAlignment="Left" HorizontalAlignment="Left"  Margin="0,0,80,0"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border  MinHeight="40" MinWidth="220"  HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Assets/station.png" Margin="0,0,10,0" Stretch="None" VerticalAlignment="Center" />
+                                            <TextBlock  Style="{StaticResource BasicTextStyle}" FontSize="16" TextWrapping="NoWrap" TextTrimming="WordEllipsis" Width="190" Margin="0,0"  VerticalAlignment="Center"
+                                            Text="{Binding Name}"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+
+                            </GridView.ItemTemplate>
+                        </GridView>
+
+                        <StackPanel Height="20"></StackPanel>
+                    </Grid>
+
+
+                    <!--TRAJECTEN-->
+                    <Grid Margin="0,0,80,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Style="{StaticResource SubheaderTextStyle}" x:Uid="MijnTrajectenHeader" Margin="0,5,80,40" Text="Mijn Trajecten"></TextBlock>
+
+                        <TextBlock Grid.Row="1" Text="Plan eerst een reis en voeg daarna het geplande traject toe als favoriet via de AppBar." x:Uid="MijnTrajectenEmpty" Visibility="{Binding Trajecten.Count, Converter={StaticResource InverseVis}}" MaxWidth="250" Style="{StaticResource BasicTextStyle}"/>
+
+
+                        <GridView Grid.Row="2" IsTabStop="False" x:Name="TrajectList" ItemsSource="{Binding Trajecten}" VerticalAlignment="Stretch" VerticalContentAlignment="Top"
+                              SelectionMode="Multiple"
+                                  SelectionChanged="TrajectList_SelectionChanged_1" 
+                                  IsRightTapEnabled="True"
+                                   IsItemClickEnabled="True"
+                                  ItemClick="TrajectList_ItemClick_1"
+                                  ItemContainerStyle="{StaticResource StoringenGridViewStyle}"
+                              ScrollViewer.HorizontalScrollMode="Disabled" ScrollViewer.VerticalScrollMode="Disabled"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                              >
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VariableSizedWrapGrid Orientation="Vertical" HorizontalChildrenAlignment="Left" HorizontalAlignment="Left"  Margin="0,0,80,0"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+
+                                        <Grid Background="White" MinHeight="40" Width="220" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                        <!--<Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition  Height="Auto" />
+                                        </Grid.RowDefinitions>-->
+
+                                            <Image Source="/Assets/traject.png" Margin="0,0,10,0" VerticalAlignment="Center" Stretch="None" />
+
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock  Style="{StaticResource BasicTextStyle}" FontSize="16"  TextWrapping="NoWrap" Margin="0,0" VerticalAlignment="Center" Text="{Binding From.Name}"></TextBlock>
+                                            <TextBlock  Style="{StaticResource BasicTextStyle}" FontSize="16"  TextWrapping="NoWrap" Margin="0,0" VerticalAlignment="Center" Text="{Binding To.Name}"></TextBlock>
+                                            </StackPanel>
+                                          
+                                            
+                                        </Grid>
+
+                                </DataTemplate>
+
+                            </GridView.ItemTemplate>
+                        </GridView>
+
+                    </Grid>
+
+                    <!--LAATST GEPLAND-->
+                    <Grid Margin="0,0,80,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Grid.Row="0" Style="{StaticResource SubheaderTextStyle}" Margin="0,5,80,40" x:Uid="LaatstGelpandHeader">Laatst Gepland</TextBlock>
+
+                        <TextBlock Grid.Row="1" Text="Geplande reizen worden automatisch bewaard in deze lijst." x:Uid="LaatstGelpandEmpty" Visibility="{Binding SearchHistory.Count, Converter={StaticResource InverseVis}}" MaxWidth="250" Style="{StaticResource BasicTextStyle}"/>
+
+
+                        <GridView Grid.Row="2" IsTabStop="False" x:Name="SearchHistoryList" ItemsSource="{Binding SearchHistory}" VerticalAlignment="Stretch" VerticalContentAlignment="Top"
+                              SelectionMode="Multiple"
+                                  SelectionChanged="SearchHistoryList_SelectionChanged_1"
+                                   IsItemClickEnabled="True"
+                                  ItemClick="SearchHistoryList_ItemClick_1"
+                                  ItemContainerStyle="{StaticResource StoringenGridViewStyle}"
+                              ScrollViewer.HorizontalScrollMode="Disabled" ScrollViewer.VerticalScrollMode="Disabled"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                             >
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VariableSizedWrapGrid Orientation="Vertical" HorizontalChildrenAlignment="Left" HorizontalAlignment="Left"  Margin="0,0,80,0"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Background="White" MinHeight="40" Width="220">
+                                        <StackPanel>
+                                                <!--<Image Source="/Assets/traject.png" Margin="0,0,10,0" />-->
+                                                <TextBlock  Style="{StaticResource BasicTextStyle}" TextWrapping="NoWrap"  Margin="0,0"  
+                                            Text="{Binding PlannerSearch.VanStation.Name}" FontSize="16"></TextBlock>
+
+                                            <TextBlock  Style="{StaticResource BasicTextStyle}" TextWrapping="NoWrap"  Margin="0,0"  
+                                            Text="{Binding PlannerSearch.NaarStation.Name}" FontSize="16"></TextBlock>
+
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Source="/Assets/tijd.png" Margin="0,0,10,0" />
+                                                <TextBlock  Style="{StaticResource BasicTextStyle}" TextWrapping="Wrap"  Margin="0,0"  
+                                            Text="{Binding PlannerSearch.DisplayTijd}"></TextBlock>
+                                            </StackPanel>
+
+
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+
+                            </GridView.ItemTemplate>
+                        </GridView>
+
+                    </Grid>
+
+            
+
+
+                 
+
+                        <StackPanel Margin="20" />
+                    </StackPanel>
+                </ScrollViewer>
+
+        </Grid>
+
+     
+
+        <Grid Visibility="Collapsed" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" x:Name="AddStationPopUp">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Background="Black" Opacity="0.4" Tapped="Grid_Tapped_1"></Grid>
+            <Grid Grid.Row="2" Background="Black" Opacity="0.4" Tapped="Grid_Tapped_1"></Grid>
+
+            <Grid Grid.Row="1" Background="{StaticResource SideBarBackgroundColor}" Height="200">
+                <StackPanel Margin="320,20,0,0" HorizontalAlignment="Left">
+                    <TextBlock Margin="0,5" Style="{StaticResource BasicWhiteTextStyle}" x:Uid="MainPagePopupAddStation">Station toevoegen</TextBlock>
+                   
+                    <Border Background="White">
+                        <syncfusion:TextBoxExt Width="300" x:Name="addAutoComplete"
+                                       BorderBrush="White"
+                                               DataContext="{Binding Planner, Source={StaticResource Locator}}"
+                             AutoCompleteSource="{Binding AllNames}"
+                                        SuggestionPopupClosed="addAutoComplete_SuggestionPopupClosed_1"
+                             AutoCompleteMode="Suggest"
+                             SuggestionMode="StartsWith"
+                             IgnoreCase="True"
+                             >
+
+                        </syncfusion:TextBoxExt>
+                    </Border>
+                </StackPanel>
+                
+            </Grid>
+
+        </Grid>
+
+
+        <VisualStateManager.VisualStateGroups>
+
+            <!-- Visual states reflect the application's view state -->
+            <VisualStateGroup>
+        		<VisualState x:Name="FullScreenLandscape"/>
+        		<VisualState x:Name="Filled"/>
+
+                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
+        		<VisualState x:Name="FullScreenPortrait">
+        			
+        		</VisualState>
+
+                <!-- The back button and title have different styles when snapped -->
+        		<VisualState x:Name="Snapped">
+        			<Storyboard>
+        				<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+        					<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+        				</ObjectAnimationUsingKeyFrames>-->
+        				<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+        					<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+        				</ObjectAnimationUsingKeyFrames>-->
+
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="AddStationPopUp">
+        					<DiscreteObjectKeyFrame KeyTime="0">
+        						<DiscreteObjectKeyFrame.Value>
+        							<Visibility>Collapsed</Visibility>
+        						</DiscreteObjectKeyFrame.Value>
+        					</DiscreteObjectKeyFrame>
+        				</ObjectAnimationUsingKeyFrames>
+
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="AppBar">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+
+                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="SnapSuggestions">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>-->
+                    </Storyboard>
+        		</VisualState>
+        	</VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <AppBar x:Name="AppBar" Opacity="1" Background="{StaticResource AppBarColor}" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" Height="88" VerticalContentAlignment="Stretch" BorderBrush="{StaticResource AppBarColor}" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
+                    <Button x:Name="DeleteTraject" x:Uid="DeleteTrajectMultipleAppBar" Click="DeleteTraject_Click_1" Content="&#xE107;" Style="{StaticResource AppBarButtonStyle}"  Tag="Verwijder trajecten"  IsEnabled="False" Visibility="Collapsed" />
+                    <Button x:Name="DeleteStation" x:Uid="DeleteStationMultipleAppBar" Click="DeleteStation_Click_1" Content="&#xE107;" Style="{StaticResource AppBarButtonStyle}"  Tag="Verwijder stations"  IsEnabled="False" Visibility="Collapsed" />
+                    <Button x:Name="DeleteTrip" x:Uid="DeleteTripMultipleAppBar" Click="DeleteTrip_Click_1" Content="&#xE107;" Style="{StaticResource AppBarButtonStyle}"  Tag="Verwijder reizen"  IsEnabled="False" Visibility="Collapsed" />
+                </StackPanel>
+                <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                    <Button x:Name="AddStation" Content="&#xE0B6;" Tapped="AddStation_Tapped_1" Style="{StaticResource AppBarButtonStyle}" x:Uid="MainPageAppBarAddStation" Tag="station"/>
+                </StackPanel>
+            </Grid>
+        </AppBar>
+
+    </Page.BottomAppBar>
+</common:LayoutAwarePage>
