@@ -435,4 +435,28 @@
   <data name="PlannerFyraNee" xml:space="preserve">
     <value>Nee</value>
   </data>
+  <data name="Conducteur" xml:space="preserve">
+    <value>Conducteur</value>
+  </data>
+  <data name="DonatePageBuy" xml:space="preserve">
+    <value>kopen</value>
+  </data>
+  <data name="DonatePageIntro" xml:space="preserve">
+    <value>Deze applicatie is volledig gratis te gebruiken. Je kunt de ontwikkeling van de applicatie steunen door één of meerdere van onderstaande badges te kopen.</value>
+  </data>
+  <data name="DonatePageTitle" xml:space="preserve">
+    <value>Steun deze applicatie</value>
+  </data>
+  <data name="gratis" xml:space="preserve">
+    <value>gratis</value>
+  </data>
+  <data name="Machinist" xml:space="preserve">
+    <value>Machinist</value>
+  </data>
+  <data name="PlannerControlUserType" xml:space="preserve">
+    <value>Type gebruiker:</value>
+  </data>
+  <data name="Reiziger" xml:space="preserve">
+    <value>Reiziger</value>
+  </data>
 </root>

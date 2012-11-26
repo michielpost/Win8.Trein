@@ -206,6 +206,11 @@ namespace ActueelNS.UserControls
         {
             ViewModel.FinishAutoComplete(InputType.Via, viaAutoComplete.Text);
         }
+
+        private void StackPanel_Tapped_1(object sender, TappedRoutedEventArgs e)
+        {
+            ViewModel.UpgradeCommand.Execute(null);
+        }
       
     }
 

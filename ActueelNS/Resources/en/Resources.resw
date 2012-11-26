@@ -427,4 +427,28 @@
   <data name="PlannerFyraNee" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="Conducteur" xml:space="preserve">
+    <value>Conductor</value>
+  </data>
+  <data name="DonatePageBuy" xml:space="preserve">
+    <value>buy</value>
+  </data>
+  <data name="DonatePageIntro" xml:space="preserve">
+    <value>This application is completely free. You can support the development of this app by buying one or more badges.</value>
+  </data>
+  <data name="DonatePageTitle" xml:space="preserve">
+    <value>Support this app</value>
+  </data>
+  <data name="gratis" xml:space="preserve">
+    <value>free</value>
+  </data>
+  <data name="Machinist" xml:space="preserve">
+    <value>Machinist</value>
+  </data>
+  <data name="PlannerControlUserType" xml:space="preserve">
+    <value>User type:</value>
+  </data>
+  <data name="Reiziger" xml:space="preserve">
+    <value>Traveler</value>
+  </data>
 </root>

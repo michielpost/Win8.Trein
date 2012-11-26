@@ -62,6 +62,7 @@ namespace ActueelNS.ViewModel
             SimpleIoc.Default.Register<StoringenViewModel>();
             SimpleIoc.Default.Register<SearchResultsViewModel>();
             SimpleIoc.Default.Register<MapViewModel>();
+            SimpleIoc.Default.Register<DonateViewModel>();
         }
 
         /// <summary>
@@ -119,6 +120,20 @@ namespace ActueelNS.ViewModel
             get
             {
                 return SimpleIoc.Default.GetInstance<StoringenViewModel>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the StoringenViewModel property.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public DonateViewModel Donate
+        {
+            get
+            {
+                return SimpleIoc.Default.GetInstance<DonateViewModel>();
             }
         }
 

@@ -12,6 +12,7 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.ApplicationSettings;
+using Windows.ApplicationModel.Store;
 
 namespace ActueelNS.ViewModel
 {
@@ -28,7 +29,13 @@ namespace ActueelNS.ViewModel
     {
         private ResourceLoader _resourceLoader = new ResourceLoader("Resources");
 
-      
+        public DonateViewModel Donate
+        {
+            get
+            {
+                return SimpleIoc.Default.GetInstance<DonateViewModel>();
+            }
+        }
 
         private ObservableCollection<Station> _allStations = new ObservableCollection<Station>();
 
@@ -202,12 +209,23 @@ namespace ActueelNS.ViewModel
             }
         }
 
+        private bool _showUpgrade;
 
-
+        public bool ShowUpgrade
+        {
+            get { return _showUpgrade; }
+            set { _showUpgrade = value;
+            RaisePropertyChanged(() => ShowUpgrade);
+            }
+        }
+        
 
         public RelayCommand SearchCommand { get; private set; }
         public RelayCommand NoHslMessageCommand { get; private set; }
         public RelayCommand YesHslMessageCommand { get; private set; }
+        public RelayCommand UpgradeCommand { get; private set; }
+
+
 
         public PlannerViewModel(ILastStationService lastStationService, IStationService stationService, ISettingService settingService)
         {
@@ -225,11 +243,20 @@ namespace ActueelNS.ViewModel
             SearchCommand = new RelayCommand(() => DoSearch());
             NoHslMessageCommand = new RelayCommand(() => NoHslMessageAction());
             YesHslMessageCommand = new RelayCommand(() => YesHslMessageAction());
+            UpgradeCommand = new RelayCommand(() => UpgradeAction());
 
             LoadAllStations();
 
             ShowHslMessage = settingService.GetShowHslMessage();
 
+
+        }
+
+       
+
+        private void UpgradeAction()
+        {
+            App.RootFrame.Navigate(typeof(DonatePage));
         }
 
         private void NoHslMessageAction()

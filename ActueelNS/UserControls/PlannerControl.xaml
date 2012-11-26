@@ -11,7 +11,7 @@
     xmlns:syncfusion="using:Syncfusion.UI.Xaml.Controls.Input"
     x:Class="ActueelNS.UserControls.PlannerControl"
     mc:Ignorable="d"
-    d:DesignHeight="600"
+    d:DesignHeight="800"
     d:DesignWidth="300">
 	<UserControl.Resources>
         <converters:RadioBoolToStringConverter x:Key="RadioBoolToStringConverter" />
@@ -626,17 +626,7 @@
                 <RadioButton IsChecked="{Binding Type, ConverterParameter=aankomst, Converter={StaticResource RadioBoolToStringConverter}, Mode=TwoWay}"  Foreground="White" FontSize="{StaticResource ControlContentThemeFontSize}"  Margin="25,0,0,0" Content="aankomst" x:Uid="PlannerControlAankomstCheck"  Style="{StaticResource RadioButtonStyle1}"/>
             </StackPanel>
 
-                <Border BorderBrush="White" BorderThickness="2" Margin="0,20" Visibility="{Binding ShowHslMessage, Converter={StaticResource Vis}}">
-                    <StackPanel>
-                        <TextBlock Margin="5"  Style="{StaticResource BasicWhiteTextStyle}" x:Uid="PlannerAskFyra">Wil je de Fyra meenemen in het reisadvies? Zet dit aan bij de instellingen via de Settings Charm.</TextBlock>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button FontSize="12" Style="{StaticResource SubmitButton}" Command="{Binding NoHslMessageCommand}" x:Uid="PlannerFyraNee">Nee</Button>
-                            <Button FontSize="12" Style="{StaticResource SubmitButton}" Command="{Binding YesHslMessageCommand}" x:Uid="PlannerFyraJa">Toon instellingen</Button>
-                        </StackPanel>
-                    </StackPanel>
-                   
-                </Border>
-   
+               
 
                 <Button HorizontalAlignment="Right" 
                         Margin="0,10"
@@ -647,7 +637,27 @@
             <TextBlock Style="{StaticResource BasicWhiteTextStyle}" Margin="0,0,0,5" Foreground="White" Visibility="Collapsed" x:Name="StationErrorTextBlock" Text="Vul een vertrek- en aankomststation in." x:Uid="PlannerControlError"/>
             <TextBlock Style="{StaticResource BasicWhiteTextStyle}" Margin="0,0,0,5" Foreground="White" Visibility="{Binding ShowErrorDifferent, Converter={StaticResource Vis}}" Text="Vul verschillende vertrek- en aankomststations in." x:Uid="PlannerControlErrorNotDifferent"/>
 
-        </StackPanel>
+                <Border BorderBrush="White" BorderThickness="2" Margin="0,20" Visibility="{Binding ShowHslMessage, Converter={StaticResource Vis}}">
+                    <StackPanel>
+                        <TextBlock Margin="5"  Style="{StaticResource BasicWhiteTextStyle}" x:Uid="PlannerAskFyra">Wil je de Fyra meenemen in het reisadvies? Zet dit aan bij de instellingen via de Settings Charm.</TextBlock>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button FontSize="12" Style="{StaticResource SubmitButton}" Command="{Binding NoHslMessageCommand}" x:Uid="PlannerFyraNee">Nee</Button>
+                            <Button FontSize="12" Style="{StaticResource SubmitButton}" Command="{Binding YesHslMessageCommand}" x:Uid="PlannerFyraJa">Toon instellingen</Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                </Border>
+
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Tapped="StackPanel_Tapped_1">
+                        <TextBlock Style="{StaticResource BasicWhiteTextStyle}" Foreground="White" Margin="0,0,5,0" x:Uid="PlannerControlUserType">Type gebruiker: </TextBlock>
+                        <TextBlock Style="{StaticResource BasicWhiteTextStyle}" Foreground="White" Text="{Binding Donate.UserType}"></TextBlock>
+                    </StackPanel>
+
+                    <Button Margin="-3,0,0,0" FontSize="12" Style="{StaticResource SubmitButton}" Command="{Binding UpgradeCommand}" Visibility="{Binding Donate.ShowUpgrade, Converter={StaticResource Vis}}">Upgrade!</Button>
+                </StackPanel>
+
+                </StackPanel>
         
     </Grid>
 </Grid>
