@@ -127,9 +127,7 @@ namespace ActueelNS.ViewModel
                     var result = await CurrentApp.RequestProductPurchaseAsync(key.Code, false);
 #endif
 
-                    var item = AvailableProducts.Where(x => x.Code == key.Code).FirstOrDefault();
-                    if (item != null)
-                        item.Purchased = true;
+                    CheckBuy();
 
                     CheckType();
 
