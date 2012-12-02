@@ -9,12 +9,38 @@
     xmlns:common="using:ActueelNS.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ext="using:BingMaps.WinRT.Extensions"
+     xmlns:converters="using:BingMaps.WinRT.Extensions.Converters"
     DataContext="{Binding Map, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
     <Page.Resources>
+        <converters:ClusterCountConverter x:Name="CountConverter" />
 
-    
+        <DataTemplate x:Key="DefaultPinTemplateWithCount">
+            <bm:Pushpin>
+                <bm:MapLayer.Position>
+                    <bm:Location Latitude="{Binding Latitude}" Longitude="{Binding Longitude}"></bm:Location>
+                </bm:MapLayer.Position>
+                <bm:Pushpin.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid Width="20" Height="20" Visibility="{Binding ChildrenCount, Converter={StaticResource Vis}}">
+                                <Ellipse Fill="#FFFF7F00" Stroke="White" StrokeThickness="3"/>
+                                <TextBlock Text="{Binding ChildrenCount, Converter={StaticResource CountConverter}}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="11"/>
+                            </Grid>
+                            <Image Source="/Assets/station_t.png" Stretch="None" Tapped="Pushpin_Tapped_1" Visibility="{Binding ChildrenCount, Converter={StaticResource InverseVis}}">
+                                <bm:MapLayer.Position>
+                                    <bm:Location Latitude="{Binding Latitude}" Longitude="{Binding Longitude}" />
+                                </bm:MapLayer.Position>
+                            </Image>
+                        </Grid>
+                       
+                    </ControlTemplate>
+                </bm:Pushpin.Template>
+            </bm:Pushpin>
+        </DataTemplate>
+
     </Page.Resources>
 
     <!--
@@ -50,26 +76,24 @@
                                 ShowNavigationBar="True"
                                 ShowScaleBar="True"
                                 helpers:MapBindings.MapCenter="{Binding Gps.CenterLocation}"
+                     ext:MapExtensions.ClusteredItemsSource="{Binding Stations}"
+                  ext:MapExtensions.ClusterItemTemplate="{StaticResource DefaultPinTemplateWithCount}"
+                  ext:MapExtensions.ClusterDistance="25"
                                 ZoomLevel="12">
                     <!--<bm:Map.Center>
                                 <bm:Location  Latitude="{Binding Gps.FirstS.Lat}" Longitude="{Binding Gps.FirstS.Long}" />
                             </bm:Map.Center>-->
-                    <bm:MapItemsControl ItemsSource="{Binding Stations}">
+                    <!--<bm:MapItemsControl ItemsSource="{Binding Stations}">
                         <bm:MapItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <!--<bm:Pushpin Text="{Binding Name}" Tapped="Pushpin_Tapped_1"  >
-                                    <bm:MapLayer.Position>
-                                        <bm:Location Latitude="{Binding Lat}" Longitude="{Binding Long}" />
-                                    </bm:MapLayer.Position>
-                                </bm:Pushpin>-->
                                 <Image Source="/Assets/station_t.png" Stretch="None" Tapped="Pushpin_Tapped_1">
                                     <bm:MapLayer.Position>
-                                        <bm:Location Latitude="{Binding Lat}" Longitude="{Binding Long}" />
+                                        <bm:Location Latitude="{Binding Latitude}" Longitude="{Binding Longitude}" />
                                     </bm:MapLayer.Position>
                                 </Image>
                             </DataTemplate>
                         </bm:MapItemsControl.ItemTemplate>
-                    </bm:MapItemsControl>
+                    </bm:MapItemsControl>-->
 
                 </bm:Map>
             </Grid>

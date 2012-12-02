@@ -1,5 +1,6 @@
 ﻿using ActueelNS.Services.Interfaces;
 using ActueelNS.Services.Models;
+using BingMaps.WinRT.Extensions;
 using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,34 @@ using System.Threading.Tasks;
 
 namespace ActueelNS.ViewModel
 {
+
+    public class GeoStation : CustomViewModelBase, IGeoCluster
+    {
+        public Station Station { get; set; }
+
+        private double _latitude;
+        public double Latitude
+        {
+            get { return _latitude; }
+            set { _latitude = value; RaisePropertyChanged(() => Latitude); }
+        }
+
+        private double _longitude;
+        public double Longitude
+        {
+            get { return _longitude; }
+            set { _longitude = value; RaisePropertyChanged(() => Longitude); }
+        }
+
+        private int _childrenCount;
+        public int ChildrenCount
+        {
+            get { return _childrenCount; }
+            set { _childrenCount = value; RaisePropertyChanged(() => ChildrenCount); }
+        }
+
+    }
+
     public class MapViewModel : CustomViewModelBase
     {
 
@@ -20,10 +49,10 @@ namespace ActueelNS.ViewModel
             }
         }
 
-        private List<Station> _stations;
+        private List<GeoStation> _stations;
 
 
-        public List<Station> Stations
+        public List<GeoStation> Stations
         {
             get { return _stations; }
             set { _stations = value;
@@ -43,7 +72,9 @@ namespace ActueelNS.ViewModel
 
         private async void LoadData()
         {
-            Stations = await SimpleIoc.Default.GetInstance<IStationService>().GetStations("NL");
+            var list = await SimpleIoc.Default.GetInstance<IStationService>().GetStations("NL");
+
+            Stations = list.Select(x => new GeoStation() { Latitude = x.Lat, Longitude = x.Long, Station = x }).ToList();
         }
 
     

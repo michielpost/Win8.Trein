@@ -1,0 +1,40 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:maps="using:Bing.Maps"
+    xmlns:converters="using:BingMaps.WinRT.Extensions.Converters">
+
+    <converters:ClusterCountConverter x:Name="CountConverter" />
+
+    <DataTemplate x:Key="DefaultPinTemplate">
+        <maps:Pushpin>
+            <maps:MapLayer.Position>
+                <maps:Location Latitude="{Binding Latitude}" Longitude="{Binding Longitude}"></maps:Location>
+            </maps:MapLayer.Position>
+            <maps:Pushpin.Template>
+                <ControlTemplate>
+                    <Grid Width="20" Height="20">
+                        <Ellipse Fill="#FFFF7F00" Stroke="White" StrokeThickness="3"/>
+                    </Grid>
+                </ControlTemplate>
+            </maps:Pushpin.Template>
+        </maps:Pushpin>
+    </DataTemplate>
+
+    <DataTemplate x:Key="DefaultPinTemplateWithCount">
+        <maps:Pushpin>
+            <maps:MapLayer.Position>
+                <maps:Location Latitude="{Binding Latitude}" Longitude="{Binding Longitude}"></maps:Location>
+            </maps:MapLayer.Position>
+            <maps:Pushpin.Template>
+                <ControlTemplate>
+                    <Grid Width="20" Height="20">
+                        <Ellipse Fill="#FFFF7F00" Stroke="White" StrokeThickness="3"/>
+                        <TextBlock Text="{Binding ChildrenCount, Converter={StaticResource CountConverter}}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="11"/>
+                    </Grid>
+                </ControlTemplate>
+            </maps:Pushpin.Template>
+        </maps:Pushpin>
+    </DataTemplate>
+
+</ResourceDictionary>

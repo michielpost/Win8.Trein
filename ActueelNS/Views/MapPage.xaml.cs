@@ -1,4 +1,5 @@
 ﻿using ActueelNS.Services.Models;
+using ActueelNS.ViewModel;
 using Bing.Maps;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,9 @@ namespace ActueelNS.Views
         public MapPage()
         {
             this.InitializeComponent();
+
+            //this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Required;
+
         }
 
         /// <summary>
@@ -53,9 +57,9 @@ namespace ActueelNS.Views
 
         private void Pushpin_Tapped_1(object sender, TappedRoutedEventArgs e)
         {
-            var s = (Station)((FrameworkElement)sender).DataContext;
+            var s = (GeoStation)((FrameworkElement)sender).DataContext;
 
-           this.Frame.Navigate(typeof(DepartureTimesPage), s.Code);
+           this.Frame.Navigate(typeof(DepartureTimesPage), s.Station.Code);
         }
     }
 }

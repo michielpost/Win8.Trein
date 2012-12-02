@@ -109,6 +109,10 @@
       <Project>{b43fbb42-4c54-4c5a-88c4-194794aebb75}</Project>
       <Name>ActueelNS.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BingMaps.WinRT.Extensions\BingMaps.WinRT.Extensions.csproj">
+      <Project>{19c86bb0-90b4-4e7d-815b-9e4a8b7b7f5b}</Project>
+      <Name>BingMaps.WinRT.Extensions</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
