@@ -267,6 +267,7 @@ namespace ActueelNS.ViewModel
 
         private void YesHslMessageAction()
         {
+            ShowHslMessage = false;
             SettingService.SaveShowHslMessage(false);
             SettingsPane.Show();
         }
