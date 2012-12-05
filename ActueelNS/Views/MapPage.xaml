@@ -78,7 +78,7 @@
                                 helpers:MapBindings.MapCenter="{Binding Gps.CenterLocation}"
                      ext:MapExtensions.ClusteredItemsSource="{Binding Stations}"
                   ext:MapExtensions.ClusterItemTemplate="{StaticResource DefaultPinTemplateWithCount}"
-                  ext:MapExtensions.ClusterDistance="25"
+                  ext:MapExtensions.ClusterDistance="21"
                                 ZoomLevel="12">
                     <!--<bm:Map.Center>
                                 <bm:Location  Latitude="{Binding Gps.FirstS.Lat}" Longitude="{Binding Gps.FirstS.Long}" />
