@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="63274M.Post.Trein" Publisher="CN=06BFE1B8-4A96-4EFE-B9A4-9C23C180D4FC" Version="1.1.2.0" />
+  <Identity Name="63274M.Post.Trein" Publisher="CN=06BFE1B8-4A96-4EFE-B9A4-9C23C180D4FC" Version="1.1.2.1" />
   <Properties>
     <DisplayName>ms-resource:AppName</DisplayName>
     <PublisherDisplayName>M. Post</PublisherDisplayName>
