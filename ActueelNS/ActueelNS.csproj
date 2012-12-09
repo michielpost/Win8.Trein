@@ -194,6 +194,7 @@
     <Compile Include="ViewModel\TravelAdviceSingleViewModel.cs" />
     <Compile Include="ViewModel\TravelAdviceViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Views\CustomBasePage.cs" />
     <Compile Include="Views\DepartureTimesPage.xaml.cs">
       <DependentUpon>DepartureTimesPage.xaml</DependentUpon>
     </Compile>

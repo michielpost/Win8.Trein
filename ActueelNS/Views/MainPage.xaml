@@ -1,4 +1,4 @@
-﻿<common:LayoutAwarePage
+﻿<common:CustomBasePage
     x:Name="pageRoot"
     x:Class="ActueelNS.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -14,9 +14,6 @@
     mc:Ignorable="d"
     DataContext="{Binding Main, Source={StaticResource Locator}}">
 
-    <common:LayoutAwarePage.Resources>
-   
-    </common:LayoutAwarePage.Resources>
 
     <!--
         This grid acts as a root panel for the page that defines two rows:
@@ -193,7 +190,7 @@
                     </Grid>
 
                     <!--IN DE BUURT-->
-                    <Grid Margin="0,0,0,0" Visibility="{Binding Gps.CurrentLocation, Converter={StaticResource Vis}}">
+                    <Grid Margin="0,0,0,0"  DataContext="{Binding Gps, Source={StaticResource Locator}}" Visibility="{Binding CurrentLocation, Converter={StaticResource Vis}}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
@@ -207,12 +204,12 @@
                                 ShowNavigationBar="False"
                                 ShowScaleBar="False"
                                 IsHitTestVisible="False"
-                                helpers:MapBindings.MapCenter="{Binding Gps.CenterLocation}"
+                                helpers:MapBindings.MapCenter="{Binding CenterLocation}"
                                 ZoomLevel="12">
                                 <!--<bm:Map.Center>
                                 <bm:Location  Latitude="{Binding Gps.FirstS.Lat}" Longitude="{Binding Gps.FirstS.Long}" />
                             </bm:Map.Center>-->
-                                <bm:MapItemsControl ItemsSource="{Binding Gps.Stations}">
+                                <bm:MapItemsControl ItemsSource="{Binding Stations}">
                                     <bm:MapItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <!--<bm:Pushpin Text="{Binding Name}">
@@ -233,7 +230,7 @@
 
                         </Grid>
                         
-                        <GridView Grid.Row="2" IsTabStop="False" Margin="0,20,0,0" ItemsSource="{Binding Gps.Stations}" VerticalAlignment="Stretch" VerticalContentAlignment="Top"
+                        <GridView Grid.Row="2" IsTabStop="False" Margin="0,20,0,0" ItemsSource="{Binding Stations}" VerticalAlignment="Stretch" VerticalContentAlignment="Top"
                               SelectionMode="None"
                                   IsItemClickEnabled="True"
                                   ItemClick="ListView_ItemClick_1"
@@ -494,4 +491,4 @@
         </AppBar>
 
     </Page.BottomAppBar>
-</common:LayoutAwarePage>
+</common:CustomBasePage>

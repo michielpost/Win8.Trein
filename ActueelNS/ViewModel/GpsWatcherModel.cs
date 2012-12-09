@@ -99,7 +99,13 @@ namespace ActueelNS.ViewModel
             try
             {
 
-                CurrentLocation = args.Position.Coordinate;
+                try
+                {
+                    CurrentLocation = args.Position.Coordinate;
+                }
+                catch
+                {
+                }
 
                 var stationList = await StationService.GetStations("NL");
 
@@ -116,7 +122,7 @@ namespace ActueelNS.ViewModel
                 DispatcherHelper.UIDispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
                     Stations = list;
-
+                    CurrentLocation = _currentLocation;
                 });
 
                 //DispatcherHelper.UIDispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
@@ -177,10 +183,12 @@ namespace ActueelNS.ViewModel
         private void CalcDistance(Station station)
         {
             //Geocoordinate stationGps = new Geocoordinate(station.Lat, station.Long);
+            if (CurrentLocation != null)
+            {
+                var dis = this.distance(CurrentLocation.Latitude, CurrentLocation.Longitude, station.Lat, station.Long, 'K');
 
-            var dis = this.distance(CurrentLocation.Latitude, CurrentLocation.Longitude, station.Lat, station.Long, 'K');
-
-            station.SetDistance(dis);
+                station.SetDistance(dis);
+            }
         }
 
         private double distance(double lat1, double lon1, double lat2, double lon2, char unit)

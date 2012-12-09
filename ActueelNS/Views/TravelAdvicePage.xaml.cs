@@ -24,7 +24,7 @@ namespace ActueelNS.Views
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class TravelAdvicePage : ActueelNS.Common.LayoutAwarePage
+    public sealed partial class TravelAdvicePage : CustomBasePage
     {
         private ReisMogelijkheid _lastViewed;
 

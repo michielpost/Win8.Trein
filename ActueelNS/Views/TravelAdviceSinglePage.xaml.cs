@@ -25,12 +25,11 @@ namespace ActueelNS.Views
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class TravelAdviceSinglePage : ActueelNS.Common.LayoutAwarePage
+    public sealed partial class TravelAdviceSinglePage : CustomBasePage
     {
 
-        private ResourceLoader _resourceLoader = new ResourceLoader("Resources");
 
-        private DataTransferManager dtm;
+       
 
         public TravelAdviceSingleViewModel ViewModel
         {
@@ -48,12 +47,10 @@ namespace ActueelNS.Views
             
         }
 
-    
-
-
-        void dtm_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        protected override void dtm_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
         {
-
+            //base.dtm_DataRequested(sender, args);
+            
             if (ViewModel != null)
             {
             args.Request.Data.Properties.Title = string.Format("{0} ({1})", ViewModel.ReisMogelijkheid.VanNaar, ViewModel.ReisMogelijkheid.VanTot);
@@ -67,6 +64,9 @@ namespace ActueelNS.Views
                 args.Request.FailWithDisplayText(_resourceLoader.GetString("ShareError"));
             }
         }
+     
+
+       
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
@@ -79,28 +79,14 @@ namespace ActueelNS.Views
 
             ViewModel.Initialize((ReisMogelijkheid)e.Parameter);
 
-            dtm = DataTransferManager.GetForCurrentView();
-
-            if (dtm != null)
-            {
-                dtm.DataRequested += dtm_DataRequested;
-            }
+           
            
             SuspensionManager.SessionState["PageType"] = typeof(TravelAdviceSinglePage).FullName;
             SuspensionManager.SessionState["PageArgs"] = e.Parameter;
 
         }
 
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
-
-            if (dtm != null)
-            {
-                dtm.DataRequested -= dtm_DataRequested;
-            }
-        }
-
+       
         private void Herplan_Tapped_1(object sender, TappedRoutedEventArgs e)
         {
             ViewModel.SetPlannerSearch();

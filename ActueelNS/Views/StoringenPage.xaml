@@ -1,4 +1,4 @@
-﻿<common:LayoutAwarePage
+﻿<common:CustomBasePage
     x:Name="pageRoot"
     x:Class="ActueelNS.Views.StoringenPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -303,4 +303,4 @@
 
 
        
-</common:LayoutAwarePage>
+</common:CustomBasePage>

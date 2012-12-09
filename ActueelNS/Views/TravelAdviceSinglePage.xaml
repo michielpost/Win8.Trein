@@ -1,4 +1,4 @@
-﻿<common:LayoutAwarePage
+﻿<common:CustomBasePage
     x:Name="pageRoot"
     x:Class="ActueelNS.Views.TravelAdviceSinglePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -283,4 +283,4 @@
     </AppBar>
 </Page.BottomAppBar>
 
-</common:LayoutAwarePage>
+</common:CustomBasePage>

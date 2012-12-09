@@ -1,4 +1,4 @@
-﻿<common:LayoutAwarePage
+﻿<common:CustomBasePage
     x:Name="pageRoot"
     x:Class="ActueelNS.Views.DonatePage"
     DataContext="{Binding Donate, Source={StaticResource Locator}}"
@@ -212,4 +212,4 @@
 
     </Grid>
 
-</common:LayoutAwarePage>
+</common:CustomBasePage>

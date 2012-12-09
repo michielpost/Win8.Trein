@@ -459,4 +459,10 @@
   <data name="Reiziger" xml:space="preserve">
     <value>Reiziger</value>
   </data>
+  <data name="ShareDefaultText" xml:space="preserve">
+    <value>Ik gebruik de applicatie Trein op Windows 8 om mijn treinreis te plannen. &lt;br /&gt; &lt;br /&gt;&lt;a href="http://apps.microsoft.com/webpdp/app/trein/bc0b903d-6f1e-4c2b-b759-54aa6ebc3e1a"&gt;Download Trein voor Windows 8&lt;/a&gt;&lt;br/&gt;http://apps.microsoft.com/webpdp/app/trein/bc0b903d-6f1e-4c2b-b759-54aa6ebc3e1a</value>
+  </data>
+  <data name="ShareDefaultTitle" xml:space="preserve">
+    <value>Ik gebruik Trein op Windows 8</value>
+  </data>
 </root>
