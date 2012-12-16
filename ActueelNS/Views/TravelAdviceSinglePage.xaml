@@ -1,4 +1,4 @@
-﻿<common:CustomBasePage
+﻿<common:BasePrintPage
     x:Name="pageRoot"
     x:Class="ActueelNS.Views.TravelAdviceSinglePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -21,7 +21,7 @@
         * Row 1 contains the rest of the page layout
     -->
     <Grid Background="{StaticResource BackgroundColor}">
-
+        <Canvas x:Name="printingRoot" Opacity="0"/>
         <Grid x:Name="grid" Width="100" HorizontalAlignment="Left">
             <Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Background="{StaticResource SideBarBackgroundColor}"></Grid>
         </Grid>
@@ -43,15 +43,14 @@
             </Grid>
 
         <Grid Grid.Column="1" x:Name="MainGrid" Grid.Row="1" Margin="180,0,0,0">
+                <Grid x:Name="printableArea">
                 <Grid.Transitions>
                     <TransitionCollection>
                         <EntranceThemeTransition FromHorizontalOffset="120" />
                     </TransitionCollection>
                 </Grid.Transitions>
 
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollMode="Disabled" ZoomMode="Disabled" IsZoomInertiaEnabled="False"
-                              x:Name="MainSV"
-                              >
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollMode="Disabled" ZoomMode="Disabled" IsZoomInertiaEnabled="False">
                 <StackPanel>
 
                     <Grid Margin="0,0,0,20">
@@ -179,7 +178,9 @@
                         </StackPanel>
                     </StackPanel>
             </ScrollViewer>
-        </Grid>
+        
+            </Grid>
+            </Grid>
 
         <Grid Grid.Row="1" x:Name="MainGridSmall" Margin="20,-20,0,0" Visibility="Collapsed">
             <Grid.RowDefinitions>
@@ -283,4 +284,4 @@
     </AppBar>
 </Page.BottomAppBar>
 
-</common:CustomBasePage>
+</common:BasePrintPage>

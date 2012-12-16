@@ -59,7 +59,10 @@ namespace ActueelNS.ViewModel
         {
             get
             {
-                return string.Format(_resourceLoader.GetString("TravelAdviceSingleViewModelTitle"), ReisMogelijkheid.VertrekDisplayTijd, ReisMogelijkheid.AankomstDisplayTijd);
+                if (ReisMogelijkheid != null)
+                    return string.Format(_resourceLoader.GetString("TravelAdviceSingleViewModelTitle"), ReisMogelijkheid.VertrekDisplayTijd, ReisMogelijkheid.AankomstDisplayTijd);
+                else
+                    return string.Empty;
             }
         }
 

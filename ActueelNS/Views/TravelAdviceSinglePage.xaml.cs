@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ActueelNS.Views.Print;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -25,7 +26,7 @@ namespace ActueelNS.Views
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class TravelAdviceSinglePage : CustomBasePage
+    public sealed partial class TravelAdviceSinglePage : BasePrintPage
     {
 
 
@@ -95,6 +96,22 @@ namespace ActueelNS.Views
         }
 
 
+        /// <summary>
+        /// Provide print content for scenario 1 first page
+        /// </summary>
+        protected override void PreparetPrintContent()
+        {
+            if (firstPage == null)
+            {
+                firstPage = new PrintContentTest();
+            }
+
+            // Add the (newley created) page to the printing root which is part of the visual tree and force it to go
+            // through layout so that the linked containers correctly distribute the content inside them.
+            PrintingRoot.Children.Add(firstPage);
+            PrintingRoot.InvalidateMeasure();
+            PrintingRoot.UpdateLayout();
+        }
       
     }
 }
