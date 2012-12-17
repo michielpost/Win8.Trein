@@ -20,9 +20,8 @@
 
         <RichTextBlockOverflow x:Name="continuationPageLinkedContainer" Grid.Row="0" Grid.Column="0"></RichTextBlockOverflow>
         <StackPanel x:Name="footer"  Grid.Row="4" Grid.Column="0" VerticalAlignment="Top" Visibility="Collapsed">
-            <Image Source="ms-appx:///Images/microsoft-sdk.png" HorizontalAlignment="Left" Stretch="None"/>
             <RichTextBlock Foreground="Black" FontSize="16" TextAlignment="Left" FontFamily="Segoe UI">
-                <Paragraph>Copyright © Microsoft Corporation. All rights reserved.</Paragraph>
+                <Paragraph>Trein voor Windows 8.</Paragraph>
             </RichTextBlock>
         </StackPanel>
     </Grid>

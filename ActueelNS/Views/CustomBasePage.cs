@@ -44,7 +44,9 @@ namespace ActueelNS.Common
             args.Request.Data.Properties.Title = _resourceLoader.GetString("ShareDefaultTitle");
 
             //args.Request.Data.SetText(ViewModel.ReisMogelijkheid.GetAsText());
-            args.Request.Data.SetHtmlFormat(HtmlFormatHelper.CreateHtmlFormat(_resourceLoader.GetString("ShareDefaultText")));
+            //args.Request.Data.SetHtmlFormat(HtmlFormatHelper.CreateHtmlFormat(_resourceLoader.GetString("ShareDefaultText")));
+
+            args.Request.FailWithDisplayText(_resourceLoader.GetString("ShareDefaultText"));
         }
     }
 }

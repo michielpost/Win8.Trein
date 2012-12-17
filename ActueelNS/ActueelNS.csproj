@@ -118,6 +118,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\RichTextBlockProperties.cs" />
     <Compile Include="Converters\InverseVisibilityConverter.cs" />
     <Compile Include="Converters\RadioBoolToStringConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
@@ -142,6 +143,9 @@
     </Compile>
     <Compile Include="UserControls\PrivacyPolicyControl.xaml.cs">
       <DependentUpon>PrivacyPolicyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ReisadviesSingleControl.xaml.cs">
+      <DependentUpon>ReisadviesSingleControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ReisdeelControl.xaml.cs">
       <DependentUpon>ReisdeelControl.xaml</DependentUpon>
@@ -268,6 +272,7 @@
     <Content Include="Assets\TileWide.scale-180.png" />
     <Content Include="Assets\traject.png" />
     <Content Include="Assets\wissel.png" />
+    <EmbeddedResource Include="Common\RichTextBlockHtml2Xaml.xslt" />
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -294,6 +299,10 @@
     <Page Include="UserControls\PrivacyPolicyControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ReisadviesSingleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ReisdeelControl.xaml">
       <Generator>MSBuild:Compile</Generator>

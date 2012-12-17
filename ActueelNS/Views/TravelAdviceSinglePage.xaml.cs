@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ActueelNS.Views.Print;
+using ActueelNS.UserControls;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -28,9 +29,6 @@ namespace ActueelNS.Views
     /// </summary>
     public sealed partial class TravelAdviceSinglePage : BasePrintPage
     {
-
-
-       
 
         public TravelAdviceSingleViewModel ViewModel
         {
@@ -76,7 +74,6 @@ namespace ActueelNS.Views
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
 
             ViewModel.Initialize((ReisMogelijkheid)e.Parameter);
 
@@ -84,6 +81,9 @@ namespace ActueelNS.Views
            
             SuspensionManager.SessionState["PageType"] = typeof(TravelAdviceSinglePage).FullName;
             SuspensionManager.SessionState["PageArgs"] = e.Parameter;
+
+            base.OnNavigatedTo(e);
+
 
         }
 
@@ -104,6 +104,7 @@ namespace ActueelNS.Views
             if (firstPage == null)
             {
                 firstPage = new PrintContentTest();
+                firstPage.DataContext = ViewModel.ReisMogelijkheid.GetAsHtmlForPrint();
             }
 
             // Add the (newley created) page to the printing root which is part of the visual tree and force it to go

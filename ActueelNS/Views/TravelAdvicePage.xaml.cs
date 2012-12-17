@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.ApplicationModel.DataTransfer;
+using ActueelNS.Views.Print;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -24,7 +26,7 @@ namespace ActueelNS.Views
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class TravelAdvicePage : CustomBasePage
+    public sealed partial class TravelAdvicePage : BasePrintPage
     {
         private ReisMogelijkheid _lastViewed;
 
@@ -74,7 +76,6 @@ namespace ActueelNS.Views
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
 
             if (e.NavigationMode != NavigationMode.Back)
             {
@@ -96,7 +97,7 @@ namespace ActueelNS.Views
                 //        SetOptimaal(optimaal);
             }
 
-          
+            base.OnNavigatedTo(e);
 
             SuspensionManager.SessionState["PageType"] = typeof(TravelAdvicePage).FullName;
 
@@ -146,5 +147,59 @@ namespace ActueelNS.Views
 
             this.Frame.Navigate(typeof(MainPage));
         }
+
+        protected override void dtm_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            //base.dtm_DataRequested(sender, args);
+
+            if (ViewModel != null)
+            {
+                args.Request.Data.Properties.Title = string.Format("{0}", ViewModel.ReisMogelijkheidOptimaal.VanNaar);
+
+
+                string html = string.Empty;
+                foreach (var reis in ViewModel.ReisMogelijkheden)
+                {
+                    html += reis.GetAsHtml();
+                }
+
+                //args.Request.Data.SetText(ViewModel.ReisMogelijkheid.GetAsText());
+                args.Request.Data.SetHtmlFormat(HtmlFormatHelper.CreateHtmlFormat(html));
+
+            }
+            else
+            {
+                args.Request.FailWithDisplayText(_resourceLoader.GetString("ShareError"));
+            }
+        }
+
+        /// <summary>
+        /// Provide print content for scenario 1 first page
+        /// </summary>
+        protected override void PreparetPrintContent()
+        {
+            if (ViewModel == null || ViewModel.ReisMogelijkheden == null)
+                return;
+
+            if (firstPage == null)
+            {
+                firstPage = new PrintContentTest();
+
+                string html = string.Empty;
+                foreach (var reis in ViewModel.ReisMogelijkheden)
+                {
+                    html += reis.GetAsHtmlForPrint();
+                }
+
+                firstPage.DataContext = html;
+            }
+
+            // Add the (newley created) page to the printing root which is part of the visual tree and force it to go
+            // through layout so that the linked containers correctly distribute the content inside them.
+            PrintingRoot.Children.Add(firstPage);
+            PrintingRoot.InvalidateMeasure();
+            PrintingRoot.UpdateLayout();
+        }
+     
     }
 }

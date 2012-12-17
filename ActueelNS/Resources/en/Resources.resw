@@ -451,4 +451,7 @@
   <data name="Reiziger" xml:space="preserve">
     <value>Traveler</value>
   </data>
+  <data name="ShareDefaultText" xml:space="preserve">
+    <value>Plan a trip to share it.</value>
+  </data>
 </root>

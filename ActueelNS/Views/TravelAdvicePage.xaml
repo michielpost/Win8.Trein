@@ -1,4 +1,4 @@
-﻿<common:CustomBasePage
+﻿<common:BasePrintPage
     x:Name="pageRoot"
     x:Class="ActueelNS.Views.TravelAdvicePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -11,9 +11,7 @@
     mc:Ignorable="d"
     DataContext="{Binding TravelAdvice, Source={StaticResource Locator}}">
 
-    <common:LayoutAwarePage.Resources>
-        
-    </common:LayoutAwarePage.Resources>
+ 
 
     <!--
         This grid acts as a root panel for the page that defines two rows:
@@ -32,6 +30,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+            <Canvas x:Name="printingRoot" Opacity="0"/>
 
             <Grid HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
@@ -260,4 +259,4 @@
         </AppBar>
     </Page.BottomAppBar>
 
-</common:CustomBasePage>
+</common:BasePrintPage>

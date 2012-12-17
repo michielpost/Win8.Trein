@@ -279,5 +279,39 @@ namespace ActueelNS.Services.Models
 
             return sb.ToString();
         }
+
+        public string GetAsHtmlForPrint()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("<p>");
+            sb.AppendFormat("<b>{0}</b>", VanNaar);
+            sb.Append("</p>");
+
+            sb.AppendFormat("<p>{0}</p>", VanTot);
+
+            sb.AppendFormat("<p>{0}</p>", DisplayReisduur);
+            sb.AppendFormat("<p>{0}</p>", DisplayOverstappen);
+
+            sb.Append("<p></p>");
+            sb.Append("<p></p>");
+
+
+            foreach (var deel in this.ReisDelen)
+            {
+
+                sb.AppendFormat("<p><b>{0}: {1} spoor {2}</b></p>", deel.FirstStop.DisplayTijd, deel.FirstStop.Naam, deel.FirstStop.Vertrekspoor);
+                sb.AppendFormat("<p>{0}: {1} spoor {2}</p>", deel.LastStop.DisplayTijd, deel.LastStop.Naam, deel.LastStop.Vertrekspoor);
+
+                sb.Append("<p></p>");
+
+
+            }
+            sb.Append("<p>----------</p>");
+            sb.Append("<p></p>");
+
+
+            return sb.ToString();
+        }
     }
 }

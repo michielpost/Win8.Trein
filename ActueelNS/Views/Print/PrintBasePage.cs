@@ -104,7 +104,7 @@ namespace ActueelNS.Common
         protected virtual void PrintTaskRequested(PrintManager sender, PrintTaskRequestedEventArgs e)
         {
             PrintTask printTask = null;
-            printTask = e.Request.CreatePrintTask("C# Printing SDK Sample", sourceRequested =>
+            printTask = e.Request.CreatePrintTask("Trein voor Windows 8", sourceRequested =>
             {
                 // Print Task event handler is invoked when the print job is completed.
                 printTask.Completed += async (s, args) =>
@@ -323,16 +323,22 @@ namespace ActueelNS.Common
         #region Navigation
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+
             // Get a pointer to our main page
             //rootPage = e.Parameter as MainPage;
 
             // init printing 
             RegisterForPrinting();
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            base.OnNavigatedFrom(e);
+
             UnregisterForPrinting();
+
         }
         #endregion
     }
