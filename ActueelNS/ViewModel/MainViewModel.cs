@@ -118,10 +118,10 @@ namespace ActueelNS.ViewModel
 
             LoadFavStations();
 
-            Task.Run(() =>
-                {
+            //Task.Run(() =>
+               // {
                     this.Gps.Initialize();
-                });
+               // });
 
 
         }
@@ -131,17 +131,17 @@ namespace ActueelNS.ViewModel
             LoadFavStations();
         }
 
-        private void LoadFavStations()
+        private async void LoadFavStations()
         {
-            Task.Run(async () =>
-                {
+            //Task.Run(async () =>
+            //    {
                     var favList = await _favStationService.GetAll();
 
                     SetFavStations(favList);
 
                     Trajecten = new ObservableCollection<Traject>(await _trajectService.GetAll());
                     SearchHistory = new ObservableCollection<SearchHistory>(await _searchHistoryService.GetAll());
-                });
+            //    });
 
         }
 

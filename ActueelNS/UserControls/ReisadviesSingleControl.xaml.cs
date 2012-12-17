@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -21,6 +22,19 @@ namespace ActueelNS.UserControls
         public ReisadviesSingleControl()
         {
             this.InitializeComponent();
+        }
+
+        private async void invokePrintingButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            // Don't act when in snapped mode
+            if (ApplicationView.Value != ApplicationViewState.Snapped)
+            {
+                try
+                {
+                    await Windows.Graphics.Printing.PrintManager.ShowPrintUIAsync();
+                }
+                catch { }
+            }
         }
     }
 }

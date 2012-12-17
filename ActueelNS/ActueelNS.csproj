@@ -14,7 +14,7 @@
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>ActueelNS_StoreKey.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>5E53A5FC6419F559874BEE6894E8B6AF69370042</PackageCertificateThumbprint>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -253,7 +253,6 @@
     <Content Include="Assets\Purchase\upgrade2.png" />
     <Content Include="Assets\Purchase\upgrade3.png" />
     <Content Include="Assets\SmallLogo.png" />
-    <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-140.png" />
     <Content Include="Assets\SplashScreen.scale-180.png" />
@@ -409,7 +408,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\winrt45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\winrt45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Q42.WinRT, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -423,11 +422,11 @@
     <SDKReference Include="Microsoft.VCLibs, Version=11.0">
       <Name>Microsoft Visual C++ Runtime Package</Name>
     </SDKReference>
-    <SDKReference Include="RadControls for Windows 8, Version=2012.3.1016">
-      <Name>RadControls for Windows 8</Name>
+    <SDKReference Include="RadControls for Windows 8, Version=2012.3.1204">
+      <Name>RadControls for Windows 8 %28RadControls for Windows 8, Version=2012.3.1204%29</Name>
     </SDKReference>
-    <SDKReference Include="SyncfusionControls, Version=10.3.0.64">
-      <Name>Syncfusion Controls for Metro</Name>
+    <SDKReference Include="SyncfusionControls, Version=10.4.0.57">
+      <Name>Syncfusion Controls for WinRT XAML</Name>
     </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">

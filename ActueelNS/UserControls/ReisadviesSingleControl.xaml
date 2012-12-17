@@ -69,6 +69,7 @@
 
                     </Grid>
 
+                    <Button x:Name="invokePrintingButton" Content="Print" Margin="0,20,10,0" Click="invokePrintingButton_Click_1"/>
                 </StackPanel>
 
                 <StackPanel  Margin="0,20,20,40" Visibility="{Binding Prijs, Converter={StaticResource Vis}}">
