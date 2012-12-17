@@ -9,6 +9,7 @@ using GalaSoft.MvvmLight.Ioc;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight.Messaging;
 using System;
+using System.Threading.Tasks;
 
 namespace ActueelNS.ViewModel
 {
@@ -117,7 +118,10 @@ namespace ActueelNS.ViewModel
 
             LoadFavStations();
 
-            this.Gps.Initialize();
+            Task.Run(() =>
+                {
+                    this.Gps.Initialize();
+                });
 
 
         }
@@ -127,15 +131,17 @@ namespace ActueelNS.ViewModel
             LoadFavStations();
         }
 
-        private async void LoadFavStations()
+        private void LoadFavStations()
         {
-            var favList = await _favStationService.GetAll();
+            Task.Run(async () =>
+                {
+                    var favList = await _favStationService.GetAll();
 
-            SetFavStations(favList);
+                    SetFavStations(favList);
 
-            Trajecten = new ObservableCollection<Traject>(await _trajectService.GetAll());
-            SearchHistory = new ObservableCollection<SearchHistory>(await _searchHistoryService.GetAll());
-
+                    Trajecten = new ObservableCollection<Traject>(await _trajectService.GetAll());
+                    SearchHistory = new ObservableCollection<SearchHistory>(await _searchHistoryService.GetAll());
+                });
 
         }
 

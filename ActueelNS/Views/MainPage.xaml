@@ -206,17 +206,9 @@
                                 IsHitTestVisible="False"
                                 helpers:MapBindings.MapCenter="{Binding CenterLocation}"
                                 ZoomLevel="12">
-                                <!--<bm:Map.Center>
-                                <bm:Location  Latitude="{Binding Gps.FirstS.Lat}" Longitude="{Binding Gps.FirstS.Long}" />
-                            </bm:Map.Center>-->
                                 <bm:MapItemsControl ItemsSource="{Binding Stations}">
                                     <bm:MapItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <!--<bm:Pushpin Text="{Binding Name}">
-                                                <bm:MapLayer.Position>
-                                                    <bm:Location Latitude="{Binding Lat}" Longitude="{Binding Long}" />
-                                                </bm:MapLayer.Position>
-                                            </bm:Pushpin>-->
                                             <Image Source="/Assets/station_t.png" Stretch="None">
                                                 <bm:MapLayer.Position>
                                                     <bm:Location Latitude="{Binding Lat}" Longitude="{Binding Long}" />
