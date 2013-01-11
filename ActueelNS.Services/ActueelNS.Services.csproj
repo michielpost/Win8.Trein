@@ -102,7 +102,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Content Include="Data\stations.xml" />
+    <Content Include="Data\stations.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\NSApi.cs" />
@@ -163,7 +165,7 @@
     </Reference>
     <Reference Include="Q42.WinRT, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Q42.WinRT.1.0.4.42\lib\winrt45\Q42.WinRT.dll</HintPath>
+      <HintPath>..\packages\Q42.WinRT.1.0.5.42\lib\winrt45\Q42.WinRT.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
