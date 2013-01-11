@@ -347,26 +347,60 @@
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
     <MainPackageIdentityName>63274M.Post.5inarow</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Autoverzekeringen</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Babywinkel</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Boeken</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Boekenwinkel</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Campings</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Drogist</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Elfstedentocht</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Fietsenwinkel</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Filemeldingen</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Flitsers</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Gratis</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Hacker</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Halloween</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Hypotheek</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Kinderkleding</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.KledingShop</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Kleurplaat</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Korting</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Lenzen</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.LoveCalculator</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Mannenkleding</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Parfum</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Reisvergelijker</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Rijmwoordenboek</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.SchoenenShop</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.SecurityCams</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.ServerMonitor</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Sinterklaas</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.SmartphoneShop</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Spaarrente</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Studiefinanciering</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Tassen</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Timezones</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.TVGids</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Vakantiehuisje</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Verkeer</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.WeekendjeWeg</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.WijnWinkel</MainPackageIdentityName>
+    <MainPackageIdentityName>63274M.Post.Wintersporten</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Woordenboek</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Zwanger</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/bc0b903d-6f1e-4c2b-b759-54aa6ebc3e1a" />
+  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/bc0b903d-6f1e-4c2b-b759-54aa6ebc3e1a">
+    <PackageInfo>
+      <PackageArchitecture>arm</PackageArchitecture>
+      <PackageMaxArchitectureVersion>1.2.0.0</PackageMaxArchitectureVersion>
+    </PackageInfo>
+    <PackageInfo>
+      <PackageArchitecture>x86</PackageArchitecture>
+      <PackageMaxArchitectureVersion>1.2.0.0</PackageMaxArchitectureVersion>
+    </PackageInfo>
+    <PackageInfo>
+      <PackageArchitecture>x64</PackageArchitecture>
+      <PackageMaxArchitectureVersion>1.2.0.0</PackageMaxArchitectureVersion>
+    </PackageInfo>
+  </PackageInfoList>
 </StoreAssociation>
