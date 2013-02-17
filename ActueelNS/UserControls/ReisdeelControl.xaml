@@ -31,7 +31,10 @@
         <Grid Grid.ColumnSpan="4" Margin="0,-2,0,-2" Opacity="0.25" Background="{StaticResource SideBarBackgroundColor}" />
         
         <StackPanel Grid.Column="0" Orientation="Horizontal"  >
-            <TextBlock Style="{StaticResource BoldBasicTextStyle}" Text="{Binding FirstStop.DisplayTijd}" Width="50"></TextBlock>
+            <StackPanel>
+                <TextBlock Style="{StaticResource BoldBasicTextStyle}" Text="{Binding FirstStop.DisplayTijd}" Width="50"></TextBlock>
+                <TextBlock Style="{StaticResource BasicTextStyle}" Foreground="Red" Visibility="{Binding FirstStop.VertragingTekst, Converter={StaticResource Vis}}" Text="{Binding FirstStop.VertragingTekst}" Width="50"></TextBlock>
+            </StackPanel>
             <TextBlock Style="{StaticResource BoldBasicTextStyle}" Text="{Binding FirstStop.Naam}"></TextBlock>
 
         </StackPanel>
@@ -63,7 +66,10 @@
 
         <!--REGEL DRIE-->
         <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="0,3,0,0">
-            <TextBlock Style="{StaticResource BoldBasicTextStyle}" Text="{Binding LastStop.DisplayTijd}" Width="50"></TextBlock>
+            <StackPanel>
+                <TextBlock Style="{StaticResource BoldBasicTextStyle}" Text="{Binding LastStop.DisplayTijd}" Width="50"></TextBlock>
+                <TextBlock Style="{StaticResource BasicTextStyle}" Foreground="Red" Visibility="{Binding LastStop.VertragingTekst, Converter={StaticResource Vis}}" Text="{Binding LastStop.VertragingTekst}" Width="50"></TextBlock>
+            </StackPanel>
             <TextBlock Style="{StaticResource BoldBasicTextStyle}" Text="{Binding LastStop.Naam}"></TextBlock>
 
         </StackPanel>

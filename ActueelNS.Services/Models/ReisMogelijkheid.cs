@@ -299,9 +299,16 @@ namespace ActueelNS.Services.Models
 
             foreach (var deel in this.ReisDelen)
             {
+                if(string.IsNullOrEmpty(deel.FirstStop.VertragingTekst))
+                    sb.AppendFormat("<p><b>{0}: {1} spoor {2}</b></p>", deel.FirstStop.DisplayTijd, deel.FirstStop.Naam, deel.FirstStop.Vertrekspoor);
+                else
+                    sb.AppendFormat("<p><b>{0} ({3}): {1} spoor {2}</b></p>", deel.FirstStop.DisplayTijd, deel.FirstStop.Naam, deel.FirstStop.Vertrekspoor, deel.FirstStop.VertragingTekst);
 
-                sb.AppendFormat("<p><b>{0}: {1} spoor {2}</b></p>", deel.FirstStop.DisplayTijd, deel.FirstStop.Naam, deel.FirstStop.Vertrekspoor);
-                sb.AppendFormat("<p>{0}: {1} spoor {2}</p>", deel.LastStop.DisplayTijd, deel.LastStop.Naam, deel.LastStop.Vertrekspoor);
+
+                if (string.IsNullOrEmpty(deel.LastStop.VertragingTekst)) 
+                    sb.AppendFormat("<p>{0}: {1} spoor {2}</p>", deel.LastStop.DisplayTijd, deel.LastStop.Naam, deel.LastStop.Vertrekspoor);
+                else
+                    sb.AppendFormat("<p>{0} ({3}): {1} spoor {2}</p>", deel.LastStop.DisplayTijd, deel.LastStop.Naam, deel.LastStop.Vertrekspoor, deel.LastStop.VertragingTekst);
 
                 sb.Append("<p></p>");
 

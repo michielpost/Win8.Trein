@@ -497,7 +497,7 @@
 
             <Border BorderThickness="0" BorderBrush="Red" x:Name="FromErrorBorder" Background="White">
 
-                    <syncfusion:TextBoxExt Grid.Row="1" x:Name="fromAutoComplete"
+                    <syncfusion:SfTextBoxExt Grid.Row="1" x:Name="fromAutoComplete"
                             
                                        BorderBrush="White"
                              AutoCompleteSource="{Binding AllNames}"
@@ -508,7 +508,7 @@
                              IgnoreCase="True"
                              >
 
-                    </syncfusion:TextBoxExt>
+                    </syncfusion:SfTextBoxExt>
                 </Border>
 
                 
@@ -516,7 +516,7 @@
 
                 <TextBlock x:Name="NaarText" Style="{StaticResource BasicWhiteTextStyle}" Margin="0,20,0,5" Text="Naar" x:Uid="PlannerControlNaarTextBox"/>
                 <Border BorderThickness="0" BorderBrush="Red" x:Name="ToErrorBorder" Background="White">
-                    <syncfusion:TextBoxExt Grid.Row="1" x:Name="toAutoComplete"
+                    <syncfusion:SfTextBoxExt Grid.Row="1" x:Name="toAutoComplete"
                                        BorderBrush="White"
                              AutoCompleteSource="{Binding AllNames}"
                                         SuggestionPopupClosed="to_SuggestionPopupClosed_1"
@@ -526,7 +526,7 @@
                              IgnoreCase="True"
                              >
 
-                    </syncfusion:TextBoxExt>
+                    </syncfusion:SfTextBoxExt>
                 </Border>
             
             <StackPanel Visibility="{Binding IsViaVisible, Converter={StaticResource InverseVis}}">
@@ -538,7 +538,7 @@
             	<Run Text="Via"/>
 </TextBlock>
                     <Border Background="White">
-                        <syncfusion:TextBoxExt Grid.Row="1" x:Name="viaAutoComplete"
+                        <syncfusion:SfTextBoxExt Grid.Row="1" x:Name="viaAutoComplete"
                                        BorderBrush="White"
                              AutoCompleteSource="{Binding AllNames}"
                                         SuggestionPopupClosed="via_SuggestionPopupClosed_1"
@@ -548,7 +548,7 @@
                              IgnoreCase="True"
                              >
 
-                        </syncfusion:TextBoxExt>
+                        </syncfusion:SfTextBoxExt>
                     </Border>
                     
                 </StackPanel>

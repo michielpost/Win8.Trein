@@ -394,7 +394,7 @@
                     <TextBlock Margin="0,5" Style="{StaticResource BasicWhiteTextStyle}" x:Uid="MainPagePopupAddStation">Station toevoegen</TextBlock>
                    
                     <Border Background="White">
-                        <syncfusion:TextBoxExt Width="300" x:Name="addAutoComplete"
+                        <syncfusion:SfTextBoxExt Width="300" x:Name="addAutoComplete"
                                        BorderBrush="White"
                                                DataContext="{Binding Planner, Source={StaticResource Locator}}"
                              AutoCompleteSource="{Binding AllNames}"
@@ -404,7 +404,7 @@
                              IgnoreCase="True"
                              >
 
-                        </syncfusion:TextBoxExt>
+                        </syncfusion:SfTextBoxExt>
                     </Border>
                 </StackPanel>
                 

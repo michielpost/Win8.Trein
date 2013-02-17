@@ -25,8 +25,10 @@
         </Grid.ColumnDefinitions>
 
 
-        <TextBlock Grid.Column="0" Grid.Row="0" 
-                   Margin="0,0,10,0" Style="{StaticResource BasicTextStyle}" FontWeight="Bold" Text="{Binding FirstStop.DisplayTijd}" />
+        <StackPanel  Grid.Column="0" Grid.Row="0" >
+            <TextBlock Margin="0,0,10,0" Style="{StaticResource BasicTextStyle}" FontWeight="Bold" Text="{Binding FirstStop.DisplayTijd}" />
+            <TextBlock Margin="0,0,10,0" Style="{StaticResource BasicTextStyle}" Foreground="Red" Visibility="{Binding FirstStop.VertragingTekst, Converter={StaticResource Vis}}" Text="{Binding FirstStop.VertragingTekst}" />
+        </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="0">
             
@@ -51,9 +53,11 @@
       
 
         <!--RIJ 2-->
-        <TextBlock Grid.Column="0" Grid.Row="1" 
-                                           Style="{StaticResource Text9Style}"
-                                           Text="{Binding LastStop.DisplayTijd}" />
+        <StackPanel  Grid.Column="0" Grid.Row="1" >
+            <TextBlock Style="{StaticResource Text9Style}" Text="{Binding LastStop.DisplayTijd}" />
+            <TextBlock Style="{StaticResource Text9Style}" Foreground="Red" Visibility="{Binding LastStop.VertragingTekst, Converter={StaticResource Vis}}" Text="{Binding LastStop.VertragingTekst}" />
+
+        </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1">
             <TextBlock Style="{StaticResource Text9Style}"
