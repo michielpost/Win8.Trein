@@ -133,15 +133,17 @@ namespace ActueelNS.ViewModel
 
         private async void LoadFavStations()
         {
+            //await Task.Delay(2000);
+
             //Task.Run(async () =>
-            //    {
+                //{
                     var favList = await _favStationService.GetAll();
 
                     SetFavStations(favList);
 
                     Trajecten = new ObservableCollection<Traject>(await _trajectService.GetAll());
                     SearchHistory = new ObservableCollection<SearchHistory>(await _searchHistoryService.GetAll());
-            //    });
+               // });
 
         }
 
@@ -170,69 +172,6 @@ namespace ActueelNS.ViewModel
 
         }
 
-       
-
-        ////public override void Cleanup()
-        ////{
-        ////    // Clean up if needed
-
-        ////    base.Cleanup();
-        ////}
-
-        //public async void SearchStation(string input)
-        //{
-        //    if (string.IsNullOrEmpty(input))
-        //    {
-        //        //LoadStations();
-        //        AllStations.Clear();
-        //    }
-        //    else
-        //    {
-        //        input = input.ToLower();
-        //        var stations = await _stationService.GetStations("NL");
-        //        var filter = stations.Where(x => x.Name.ToLower().StartsWith(input)).Take(3).ToList();
-
-        //        AllStations = filter;
-        //    }
-        //}
-
-        //public async void SearchStation(string p)
-        //{
-        //    if (string.IsNullOrEmpty(p))
-        //        AddSuggestStations.Clear();
-        //    else
-        //    {
-        //        p = p.ToLower();
-
-        //        //var newStations = await TaskEx.Run<List<Station>>(() =>
-        //        //    {
-
-        //        var stations = (await _stationService.GetStations("NL")).Where(x => x.Name.ToLower().StartsWith(p)).Take(3);
-
-        //        if (stations.Count() < 3)
-        //        {
-        //            var extraStations = (await _stationService.GetStations("NL")).Where(x => x.StartsWith(p)).Take(3 - stations.Count());
-
-        //            stations = stations.Union(extraStations);
-        //        }
-
-        //        //return stations.ToList();
-
-
-        //        // });
-
-        //        AddSuggestStations.Clear();
-
-        //        //newStations.ForEach(x => StationList.Add(x));
-
-        //        foreach (var s in stations)
-        //            AddSuggestStations.Add(s);
-
-        //        //StationList = stations;
-        //    }
-        //}
-
-
         internal async void AddFavStation(Station station)
         {
             var favList = await _favStationService.Add(station);
@@ -244,32 +183,12 @@ namespace ActueelNS.ViewModel
         {
             this.Planner.Initialize();
 
-            this.Gps.SoftInitialize();
-
-
-            //if (this.FavStations != null)
-            //{
-            //    foreach (var fav in this.FavStations)
-            //    {
-            //        fav.SoftInitialize();
-            //    }
-            //}
-
         }
 
         public void SoftCleanup()
         {
             base.Cleanup();
 
-            this.Gps.SoftCleanup();
-
-            //if (this.FavStations != null)
-            //{
-            //    foreach (var fav in this.FavStations)
-            //    {
-            //        fav.SoftCleanup();
-            //    }
-            //}
         }
 
         public override void Cleanup()

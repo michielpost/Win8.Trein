@@ -274,6 +274,8 @@ namespace ActueelNS.ViewModel
 
         private async void LoadAllStations()
         {
+            //await Task.Delay(2000);
+
             var list = await StationService.GetStations("NL");
 
             List<string> allNames = new List<string>();

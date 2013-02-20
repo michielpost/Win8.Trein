@@ -274,7 +274,7 @@ namespace ActueelNS.ViewModel
 
         internal SecondaryTile CreateTileForStation()
         {
-            Uri logo = new Uri("ms-appx:///Assets/Tile.png");
+            Uri logo = new Uri("ms-appx:///Assets/Tile.scale-100.png");
 
             // During creation of secondary tile, an application may set additional arguments on the tile that will be passed in during activation. 
             // These arguments should be meaningful to the application. In this sample, we'll pass in the date and time the secondary tile was pinned.

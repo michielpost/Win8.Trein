@@ -237,16 +237,6 @@ namespace ActueelNS.ViewModel
 
         }
 
-        internal void SoftInitialize()
-        {
-            //if (_stationsVm != null)
-            //{
-            //    foreach (var vm in _stationsVm)
-            //    {
-            //        vm.SoftInitialize();
-            //    }
-            //}
-        }
 
         public override void Cleanup()
         {
@@ -259,23 +249,8 @@ namespace ActueelNS.ViewModel
 
                 _instance = null;
             }
-
-
-            SoftCleanup();
             
         }
-
-        internal void SoftCleanup()
-        {
-            //if (_stationsVm != null)
-            //{
-            //    foreach (var vm in _stationsVm)
-            //    {
-            //        vm.SoftCleanup();
-            //    }
-            //}
-        }
-
        
     }
 }

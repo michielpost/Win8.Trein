@@ -165,7 +165,7 @@
     </Reference>
     <Reference Include="Q42.WinRT, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Q42.WinRT.1.0.5.42\lib\winrt45\Q42.WinRT.dll</HintPath>
+      <HintPath>..\packages\Q42.WinRT.1.0.7.42\lib\winrt45\Q42.WinRT.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
