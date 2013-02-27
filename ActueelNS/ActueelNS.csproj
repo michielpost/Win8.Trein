@@ -425,8 +425,8 @@
     <SDKReference Include="Microsoft.VCLibs, Version=11.0">
       <Name>Microsoft Visual C++ Runtime Package</Name>
     </SDKReference>
-    <SDKReference Include="RadControls for Windows 8, Version=2012.3.1204">
-      <Name>RadControls for Windows 8 %28RadControls for Windows 8, Version=2012.3.1204%29</Name>
+    <SDKReference Include="RadControls for Windows 8, Version=2013.1.219">
+      <Name>RadControls for Windows 8</Name>
     </SDKReference>
     <SDKReference Include="Syncfusion controls for WinRT XAML, Version=11.1.0.21">
       <Name>Syncfusion Controls for WinRT XAML</Name>
