@@ -69,6 +69,8 @@ namespace ActueelNS.Views
                 DisruptionList.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
 
+            this.addAutoComplete.InitializeSuggestionsProvider(this.ViewModel.Planner.SearchStationProvider);
+
         }
 
        
@@ -120,28 +122,17 @@ namespace ActueelNS.Views
 
         private void AddStation_Tapped_1(object sender, TappedRoutedEventArgs e)
         {
+            AppBar.IsOpen = false;
+
             addAutoComplete.Text = string.Empty;
 
             AddStationPopUp.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
-            addAutoComplete.Focus(Windows.UI.Xaml.FocusState.Programmatic);
+            addAutoComplete.Focus(Windows.UI.Xaml.FocusState.Keyboard);
 
-            AppBar.IsOpen = false;
 
         }
 
-      
-
-        //private void AddSuggestList_ItemClick_1(object sender, ItemClickEventArgs e)
-        //{
-        //    Station station = e.ClickedItem as Station;
-
-        //    if (station != null)
-        //        ViewModel.AddFavStation(station);
-
-        //    AddStationPopUp.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-
-        //}
 
         private void Grid_Tapped_1(object sender, TappedRoutedEventArgs e)
         {
@@ -308,6 +299,22 @@ namespace ActueelNS.Views
         private void Map_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MapPage));
+        }
+
+        
+        private void AddStationButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(addAutoComplete.Text))
+            {
+                Station station = SimpleIoc.Default.GetInstance<PlannerViewModel>().GetStationByName(addAutoComplete.Text);
+
+                if (station != null)
+                {
+                    ViewModel.AddFavStation(station);
+
+                    AddStationPopUp.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                }
+            }
         }
 
        

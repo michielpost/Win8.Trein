@@ -465,4 +465,7 @@
   <data name="ShareDefaultTitle" xml:space="preserve">
     <value>Ik gebruik Trein op Windows 8</value>
   </data>
+  <data name="MainPageStationToevoegenButton.Content" xml:space="preserve">
+    <value>Toevoegen</value>
+  </data>
 </root>

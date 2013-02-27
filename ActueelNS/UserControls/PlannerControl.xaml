@@ -4,11 +4,10 @@
     xmlns:local="using:ActueelNS.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikCore="using:Telerik.Core"
     xmlns:telerikInput="using:Telerik.UI.Xaml.Controls.Input"
     xmlns:converters="using:ActueelNS.Converters"
     xmlns:DateTimePickers="using:Telerik.UI.Xaml.Controls.Input.DateTimePickers"
-    xmlns:telerikCore="using:Telerik.Core"
-    xmlns:syncfusion="using:Syncfusion.UI.Xaml.Controls.Input"
     x:Class="ActueelNS.UserControls.PlannerControl"
     mc:Ignorable="d"
     d:DesignHeight="800"
@@ -497,7 +496,23 @@
 
             <Border BorderThickness="0" BorderBrush="Red" x:Name="FromErrorBorder" Background="White">
 
-                    <syncfusion:SfTextBoxExt Grid.Row="1" x:Name="fromAutoComplete"
+                    <telerikInput:RadAutoCompleteBox x:Name="fromAutoComplete" Grid.Row="1" 
+                                         Width="200" 
+                                                      BorderBrush="White"
+                                          LostFocus="fromAutoComplete_LostFocus_1"            
+                                         FilterMode="StartsWith"  HorizontalAlignment="Left" 
+                                         FilterComparisonMode="InvariantCultureIgnoreCase"
+                                         AutosuggestFirstItem="True"
+                                         FilterStartThreshold="0">
+                        <telerikInput:RadAutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" telerikInput:RadAutoCompleteBox.IsTextMatchHighlightEnabled="True"/>
+                            </DataTemplate>
+                        </telerikInput:RadAutoCompleteBox.ItemTemplate>
+                    </telerikInput:RadAutoCompleteBox>
+
+
+                    <!--<syncfusion:SfTextBoxExt Grid.Row="1" x:Name="fromAutoComplete"
                             
                                        BorderBrush="White"
                              AutoCompleteSource="{Binding AllNames}"
@@ -508,7 +523,7 @@
                              IgnoreCase="True"
                              >
 
-                    </syncfusion:SfTextBoxExt>
+                    </syncfusion:SfTextBoxExt>-->
                 </Border>
 
                 
@@ -516,7 +531,23 @@
 
                 <TextBlock x:Name="NaarText" Style="{StaticResource BasicWhiteTextStyle}" Margin="0,20,0,5" Text="Naar" x:Uid="PlannerControlNaarTextBox"/>
                 <Border BorderThickness="0" BorderBrush="Red" x:Name="ToErrorBorder" Background="White">
-                    <syncfusion:SfTextBoxExt Grid.Row="1" x:Name="toAutoComplete"
+                    <telerikInput:RadAutoCompleteBox x:Name="toAutoComplete" Grid.Row="1" 
+                                         Width="200" 
+                                                      BorderBrush="White"
+                                           LostFocus="toAutoComplete_LostFocus_1"         
+                                         FilterMode="StartsWith"  HorizontalAlignment="Left" 
+                                         FilterComparisonMode="InvariantCultureIgnoreCase"
+                                         AutosuggestFirstItem="True"
+                                         FilterStartThreshold="0">
+                        <telerikInput:RadAutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" telerikInput:RadAutoCompleteBox.IsTextMatchHighlightEnabled="True"/>
+                            </DataTemplate>
+                        </telerikInput:RadAutoCompleteBox.ItemTemplate>
+                    </telerikInput:RadAutoCompleteBox>
+
+
+                    <!--<syncfusion:SfTextBoxExt Grid.Row="1" x:Name="toAutoComplete"
                                        BorderBrush="White"
                              AutoCompleteSource="{Binding AllNames}"
                                         SuggestionPopupClosed="to_SuggestionPopupClosed_1"
@@ -526,7 +557,7 @@
                              IgnoreCase="True"
                              >
 
-                    </syncfusion:SfTextBoxExt>
+                    </syncfusion:SfTextBoxExt>-->
                 </Border>
             
             <StackPanel Visibility="{Binding IsViaVisible, Converter={StaticResource InverseVis}}">
@@ -538,7 +569,22 @@
             	<Run Text="Via"/>
 </TextBlock>
                     <Border Background="White">
-                        <syncfusion:SfTextBoxExt Grid.Row="1" x:Name="viaAutoComplete"
+                        <telerikInput:RadAutoCompleteBox x:Name="viaAutoComplete" Grid.Row="1" 
+                                         Width="200" 
+                                                      BorderBrush="White"
+                                          LostFocus="viaAutoComplete_LostFocus_1"            
+                                         FilterMode="StartsWith"  HorizontalAlignment="Left" 
+                                         FilterComparisonMode="InvariantCultureIgnoreCase"
+                                         AutosuggestFirstItem="True"
+                                         FilterStartThreshold="0">
+                            <telerikInput:RadAutoCompleteBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}" telerikInput:RadAutoCompleteBox.IsTextMatchHighlightEnabled="True"/>
+                                </DataTemplate>
+                            </telerikInput:RadAutoCompleteBox.ItemTemplate>
+                        </telerikInput:RadAutoCompleteBox>
+                        
+                        <!--<syncfusion:SfTextBoxExt Grid.Row="1" x:Name="viaAutoComplete"
                                        BorderBrush="White"
                              AutoCompleteSource="{Binding AllNames}"
                                         SuggestionPopupClosed="via_SuggestionPopupClosed_1"
@@ -548,7 +594,7 @@
                              IgnoreCase="True"
                              >
 
-                        </syncfusion:SfTextBoxExt>
+                        </syncfusion:SfTextBoxExt>-->
                     </Border>
                     
                 </StackPanel>

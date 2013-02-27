@@ -10,7 +10,8 @@
     xmlns:helpers="using:ActueelNS.Helpers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:syncfusion="using:Syncfusion.UI.Xaml.Controls.Input"
+   xmlns:telerikCore="using:Telerik.Core"
+    xmlns:telerikInput="using:Telerik.UI.Xaml.Controls.Input"
     mc:Ignorable="d"
     DataContext="{Binding Main, Source={StaticResource Locator}}">
 
@@ -393,8 +394,23 @@
                 <StackPanel Margin="320,20,0,0" HorizontalAlignment="Left">
                     <TextBlock Margin="0,5" Style="{StaticResource BasicWhiteTextStyle}" x:Uid="MainPagePopupAddStation">Station toevoegen</TextBlock>
                    
-                    <Border Background="White">
-                        <syncfusion:SfTextBoxExt Width="300" x:Name="addAutoComplete"
+                    <StackPanel Orientation="Horizontal">
+                        <Border Background="White">
+                            <telerikInput:RadAutoCompleteBox x:Name="addAutoComplete" Grid.Row="1" 
+                                         Width="200" 
+                                                      BorderBrush="White"
+                                         FilterMode="StartsWith"  HorizontalAlignment="Left" 
+                                         FilterComparisonMode="InvariantCultureIgnoreCase"
+                                         AutosuggestFirstItem="True"
+                                         FilterStartThreshold="0">
+                                <telerikInput:RadAutoCompleteBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" telerikInput:RadAutoCompleteBox.IsTextMatchHighlightEnabled="True"/>
+                                    </DataTemplate>
+                                </telerikInput:RadAutoCompleteBox.ItemTemplate>
+                            </telerikInput:RadAutoCompleteBox>
+
+                            <!--<syncfusion:SfTextBoxExt Width="300" x:Name="addAutoComplete"
                                        BorderBrush="White"
                                                DataContext="{Binding Planner, Source={StaticResource Locator}}"
                              AutoCompleteSource="{Binding AllNames}"
@@ -404,8 +420,11 @@
                              IgnoreCase="True"
                              >
 
-                        </syncfusion:SfTextBoxExt>
-                    </Border>
+                        </syncfusion:SfTextBoxExt>-->
+                        </Border>
+
+                        <Button Content="Toevoegen"  Style="{StaticResource SubmitButton}" x:Uid="MainPageStationToevoegenButton" Click="AddStationButton_Click_1"  />
+                    </StackPanel>
                 </StackPanel>
                 
             </Grid>

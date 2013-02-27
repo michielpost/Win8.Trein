@@ -454,4 +454,7 @@
   <data name="ShareDefaultText" xml:space="preserve">
     <value>Plan a trip to share it.</value>
   </data>
+  <data name="MainPageStationToevoegenButton.Content" xml:space="preserve">
+    <value>Add</value>
+  </data>
 </root>

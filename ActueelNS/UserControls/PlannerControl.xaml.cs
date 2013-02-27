@@ -16,7 +16,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Syncfusion.UI.Xaml.Controls.Input;
 using System.Collections;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
@@ -25,6 +24,7 @@ namespace ActueelNS.UserControls
 {
     public sealed partial class PlannerControl : UserControl
     {
+
 
         public PlannerViewModel ViewModel
         {
@@ -47,7 +47,6 @@ namespace ActueelNS.UserControls
             Messenger.Default.Register<string>(this, "setVia", DoSetVia);
 
 
-
         }
 
         void DoHighlight(string input)
@@ -59,8 +58,8 @@ namespace ActueelNS.UserControls
         {
             fromAutoComplete.Text = input;
 
-            await Task.Delay(10);
-            fromAutoComplete.IsSuggestionOpen = false;
+            //await Task.Delay(10);
+            //fromAutoComplete.IsSuggestionOpen = false;
 
         }
 
@@ -68,8 +67,8 @@ namespace ActueelNS.UserControls
         {
             toAutoComplete.Text = input;
 
-            await Task.Delay(10);
-            toAutoComplete.IsSuggestionOpen = false;
+            //await Task.Delay(10);
+            //toAutoComplete.IsSuggestionOpen = false;
 
         }
 
@@ -77,8 +76,8 @@ namespace ActueelNS.UserControls
         {
             viaAutoComplete.Text = input;
 
-            await Task.Delay(10);
-            viaAutoComplete.IsSuggestionOpen = false;
+            //await Task.Delay(10);
+            //viaAutoComplete.IsSuggestionOpen = false;
 
         }
 
@@ -90,6 +89,11 @@ namespace ActueelNS.UserControls
 
             DatePicker.MinValue = DateTime.Now.AddDays(-7);
             DatePicker.MaxValue = DateTime.Now.AddYears(1);
+
+            this.fromAutoComplete.InitializeSuggestionsProvider(this.ViewModel.FromStationProvider);
+            this.toAutoComplete.InitializeSuggestionsProvider(this.ViewModel.ToStationProvider);
+            this.viaAutoComplete.InitializeSuggestionsProvider(this.ViewModel.ViaStationProvider);
+
         }
 
 

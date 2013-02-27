@@ -13,6 +13,7 @@ using GalaSoft.MvvmLight.Messaging;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.ApplicationSettings;
 using Windows.ApplicationModel.Store;
+using Telerik.UI.Xaml.Controls.Input.AutoCompleteBox;
 
 namespace ActueelNS.ViewModel
 {
@@ -28,6 +29,12 @@ namespace ActueelNS.ViewModel
     public class PlannerViewModel : CustomViewModelBase
     {
         private ResourceLoader _resourceLoader = new ResourceLoader("Resources");
+
+        public WebServiceTextSearchProvider FromStationProvider;
+        public WebServiceTextSearchProvider ToStationProvider;
+        public WebServiceTextSearchProvider ViaStationProvider;
+        public WebServiceTextSearchProvider SearchStationProvider;
+
 
         public DonateViewModel Donate
         {
@@ -49,18 +56,7 @@ namespace ActueelNS.ViewModel
             }
         }
 
-        private List<string> _allNames;
-
-        public List<string> AllNames
-        {
-            get { return _allNames; }
-            set { _allNames = value;
-            RaisePropertyChanged(() => AllNames);
-            }
-        }
-        
-
-        
+       
 
         private Station _vanStation;
 
@@ -249,7 +245,44 @@ namespace ActueelNS.ViewModel
 
             ShowHslMessage = settingService.GetShowHslMessage();
 
+            this.FromStationProvider = new WebServiceTextSearchProvider();
+            this.FromStationProvider.InputChanged += stationProvider_InputChanged;
 
+            this.ToStationProvider = new WebServiceTextSearchProvider();
+            this.ToStationProvider.InputChanged += stationProvider_InputChanged;
+
+            this.ViaStationProvider = new WebServiceTextSearchProvider();
+            this.ViaStationProvider.InputChanged += stationProvider_InputChanged;
+
+            this.SearchStationProvider = new WebServiceTextSearchProvider();
+            this.SearchStationProvider.InputChanged += stationProvider_InputChanged;
+        }
+
+        void stationProvider_InputChanged(object sender, EventArgs e)
+        {
+            WebServiceTextSearchProvider provider = (WebServiceTextSearchProvider)sender;
+
+            string inputString = provider.InputString;
+            if (!string.IsNullOrEmpty(inputString))
+            {
+
+                string p = inputString.ToLower();
+
+                var stations = this.AllStations.Where(x => x.Name.ToLower().StartsWith(p)).Take(5);
+
+                if (stations.Count() < 5)
+                {
+                    var extraStations = AllStations.Where(x => x.StartsWith(p)).Take(5 - stations.Count());
+
+                    stations = stations.Union(extraStations);
+                }
+
+                provider.LoadItems(stations);
+            }
+            else
+            {
+                provider.Reset();
+            }
         }
 
        
@@ -274,23 +307,7 @@ namespace ActueelNS.ViewModel
 
         private async void LoadAllStations()
         {
-            //await Task.Delay(2000);
-
             var list = await StationService.GetStations("NL");
-
-            List<string> allNames = new List<string>();
-            foreach (var item in list)
-            {
-                allNames.Add(item.Name);
-
-                foreach (var se in item.NamesExtra)
-                {
-                    allNames.Add(se);
-
-                }
-            }
-
-            AllNames = allNames;
             AllStations = new ObservableCollection<Station>(list);
         }
 
@@ -299,9 +316,6 @@ namespace ActueelNS.ViewModel
             if (this.VanStation == null)
                 VanStation = input;
         }
-
-        
-        
 
         private async void DoSearch()
         {

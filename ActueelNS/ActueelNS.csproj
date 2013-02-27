@@ -428,9 +428,6 @@
     <SDKReference Include="RadControls for Windows 8, Version=2013.1.219">
       <Name>RadControls for Windows 8</Name>
     </SDKReference>
-    <SDKReference Include="Syncfusion controls for WinRT XAML, Version=11.1.0.21">
-      <Name>Syncfusion Controls for WinRT XAML</Name>
-    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
