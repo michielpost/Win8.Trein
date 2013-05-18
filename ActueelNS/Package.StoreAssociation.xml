@@ -389,18 +389,5 @@
     <MainPackageIdentityName>63274M.Post.Woordenboek</MainPackageIdentityName>
     <MainPackageIdentityName>63274M.Post.Zwanger</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/bc0b903d-6f1e-4c2b-b759-54aa6ebc3e1a">
-    <PackageInfo>
-      <PackageArchitecture>arm</PackageArchitecture>
-      <PackageMaxArchitectureVersion>1.2.1.0</PackageMaxArchitectureVersion>
-    </PackageInfo>
-    <PackageInfo>
-      <PackageArchitecture>x64</PackageArchitecture>
-      <PackageMaxArchitectureVersion>1.2.1.0</PackageMaxArchitectureVersion>
-    </PackageInfo>
-    <PackageInfo>
-      <PackageArchitecture>x86</PackageArchitecture>
-      <PackageMaxArchitectureVersion>1.2.1.0</PackageMaxArchitectureVersion>
-    </PackageInfo>
-  </PackageInfoList>
+  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/bc0b903d-6f1e-4c2b-b759-54aa6ebc3e1a" />
 </StoreAssociation>
