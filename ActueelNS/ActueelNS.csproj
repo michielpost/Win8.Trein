@@ -245,6 +245,7 @@
   <ItemGroup>
     <Content Include="..\ActueelNS.Services\Data\stations.xml">
       <Link>Data\stations.xml</Link>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\nietoverstappen.png" />
